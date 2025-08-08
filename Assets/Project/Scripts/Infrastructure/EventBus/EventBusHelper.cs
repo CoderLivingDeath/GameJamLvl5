@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Template.Project.Infrastructure.EventBus
+namespace GameJamLvl5.Project.Infrastructure.EventBus
 {
     internal static class EventBusHelper
     {

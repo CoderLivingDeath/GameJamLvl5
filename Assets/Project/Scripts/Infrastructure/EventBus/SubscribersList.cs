@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Template.Project.Infrastructure.EventBus
+namespace GameJamLvl5.Project.Infrastructure.EventBus
 {
     internal class SubscribersList<TSubscriber> where TSubscriber : class
     {

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Template.Project.Infrastructure.EventBus
+namespace GameJamLvl5.Project.Infrastructure.EventBus
 {
     public class EventBus
     {
@@ -35,7 +35,11 @@ namespace Template.Project.Infrastructure.EventBus
         public void RaiseEvent<TSubscriber>(Action<TSubscriber> action)
             where TSubscriber : class, IGlobalSubscriber
         {
-            SubscribersList<IGlobalSubscriber> subscribers = s_Subscribers[typeof(TSubscriber)];
+            if (!s_Subscribers.TryGetValue(typeof(TSubscriber), out SubscribersList<IGlobalSubscriber> subscribers) || subscribers == null)
+            {
+                // Нет подписчиков — просто выходим из метода, ничего не вызываем
+                return;
+            }
 
             subscribers.Executing = true;
             foreach (IGlobalSubscriber subscriber in subscribers.List)

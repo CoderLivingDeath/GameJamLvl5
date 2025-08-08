@@ -2,22 +2,29 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
-using Template.Project.Infrastructure.EventBus;
+using GameJamLvl5.Project.Infrastructure.EventBus;
+using System.Linq;
+using System.Text.RegularExpressions;
+using UnityEngine;
+
 public class InputService : IDisposable
 {
     private readonly InputSystem_Actions _inputActions;
-    private readonly EventBus _eventBus;
     private readonly InputSubscribersContainer _subscribers;
 
     private bool _disposed;
 
-    public InputService(EventBus eventBus, InputSystem_Actions inputActions, InputSubscribersContainer subscribers)
+    public InputService(InputSystem_Actions inputActions, InputSubscribersContainer subscribers)
     {
-        _eventBus = eventBus ?? throw new ArgumentNullException(nameof(eventBus));
         _subscribers = subscribers ?? throw new ArgumentNullException(nameof(subscribers));
         _inputActions = inputActions ?? throw new ArgumentNullException(nameof(inputActions));
 
         Enable();
+
+        foreach (var item in _subscribers)
+        {
+            Debug.Log(item);
+        }
     }
 
     public void Enable()
@@ -131,16 +138,11 @@ public class InputSubscriber : IDisposable
 }
 
 /// <summary>
-/// Контейнер для управления подписчиками на события InputAction.
-/// Позволяет подписывать, отписывать и перечислять подписчиков.
+/// РљРѕРЅС‚РµР№РЅРµСЂ РґР»СЏ СѓРїСЂР°РІР»РµРЅРёСЏ РїРѕРґРїРёСЃС‡РёРєР°РјРё РЅР° СЃРѕР±С‹С‚РёСЏ InputAction.
+/// РџРѕР·РІРѕР»СЏРµС‚ РїРѕРґРїРёСЃС‹РІР°С‚СЊ, РѕС‚РїРёСЃС‹РІР°С‚СЊ Рё РїРµСЂРµС‡РёСЃР»СЏС‚СЊ РїРѕРґРїРёСЃС‡РёРєРѕРІ.
 /// </summary>
 public class InputSubscribersContainer : IEnumerable<KeyValuePair<string, InputSubscriber>>, IDisposable
 {
-
-    private const string CALLTYPE_STARTED = "started";
-    private const string CALLTYPE_PERFORMED = "performed";
-    private const string CALLTYPE_CANCELED = "canceled";
-
     public bool IsActive => _isActive;
     private bool _isActive = false;
 
@@ -152,43 +154,43 @@ public class InputSubscribersContainer : IEnumerable<KeyValuePair<string, InputS
     public InputSubscribersContainer() { }
 
     /// <summary>
-    /// Получение или установка подписчика по ключу.
-    /// При установке старый подписчик отписывается и заменяется на новый.
+    /// РџРѕР»СѓС‡РµРЅРёРµ РёР»Рё СѓСЃС‚Р°РЅРѕРІРєР° РїРѕРґРїРёСЃС‡РёРєР° РїРѕ РєР»СЋС‡Сѓ.
+    /// РџСЂРё СѓСЃС‚Р°РЅРѕРІРєРµ СЃС‚Р°СЂС‹Р№ РїРѕРґРїРёСЃС‡РёРє РѕС‚РїРёСЃС‹РІР°РµС‚СЃСЏ Рё Р·Р°РјРµРЅСЏРµС‚СЃСЏ РЅР° РЅРѕРІС‹Р№.
     /// </summary>
-    public InputSubscriber this[string key]
-    {
-        get
-        {
-            if (TryFormatKey(key, out var formatedKey))
-            {
-                if (_subscribers.TryGetValue(formatedKey, out var value))
-                    return value;
+    // public InputSubscriber this[string key]
+    // {
+    //     get
+    //     {
+    //         if (TryFormatKey(key, out var formatedKey))
+    //         {
+    //             if (_subscribers.TryGetValue(formatedKey, out var value))
+    //                 return value;
 
-                throw new KeyNotFoundException($"No InputSubscriber with key '{formatedKey}'.");
-            }
-            else
-            {
-                throw new KeyNotFoundException($"Invalid key format '{key}'.");
-            }
-        }
-        set
-        {
-            ThrowIfDisposed();
-            if (TryFormatKey(key, out var formatedKey))
-            {
+    //             throw new KeyNotFoundException($"No InputSubscriber with key '{formatedKey}'.");
+    //         }
+    //         else
+    //         {
+    //             throw new KeyNotFoundException($"Invalid key format '{key}'.");
+    //         }
+    //     }
+    //     set
+    //     {
+    //         ThrowIfDisposed();
+    //         if (TryFormatKey(key, out var formatedKey))
+    //         {
 
-                if (_subscribers.ContainsKey(formatedKey))
-                {
-                    _subscribers[formatedKey].Dispose();
-                }
-                _subscribers[formatedKey] = value ?? throw new ArgumentNullException(nameof(value));
-            }
-            else
-            {
-                throw new KeyNotFoundException($"Invalid key format '{key}'.");
-            }
-        }
-    }
+    //             if (_subscribers.ContainsKey(formatedKey))
+    //             {
+    //                 _subscribers[formatedKey].Dispose();
+    //             }
+    //             _subscribers[formatedKey] = value ?? throw new ArgumentNullException(nameof(value));
+    //         }
+    //         else
+    //         {
+    //             throw new KeyNotFoundException($"Invalid key format '{key}'.");
+    //         }
+    //     }
+    // }
 
     public void Enable()
     {
@@ -220,13 +222,13 @@ public class InputSubscribersContainer : IEnumerable<KeyValuePair<string, InputS
     public void Subscribe(string key, InputSubscriber subscriber)
     {
         ThrowIfDisposed();
-        var formatedKey = FormatKey(key, subscriber.Type);
+        var formatedKey = BuildKeyPath(key, subscriber.Type);
 
         if (_subscribers.ContainsKey(formatedKey)) throw new InvalidOperationException($"such a key already exists: {formatedKey}");
         if (subscriber == null)
             throw new ArgumentNullException(nameof(subscriber));
 
-        // Если есть старый подписчик — освободить его ресурсы
+        // Р•СЃР»Рё РµСЃС‚СЊ СЃС‚Р°СЂС‹Р№ РїРѕРґРїРёСЃС‡РёРє вЂ” РѕСЃРІРѕР±РѕРґРёС‚СЊ РµРіРѕ СЂРµСЃСѓСЂСЃС‹
         if (_subscribers.TryGetValue(formatedKey, out var oldSubscriber))
         {
             oldSubscriber.Dispose();
@@ -235,18 +237,18 @@ public class InputSubscribersContainer : IEnumerable<KeyValuePair<string, InputS
     }
 
     /// <summary>
-    /// Добавить одного подписчика.
+    /// Р”РѕР±Р°РІРёС‚СЊ РѕРґРЅРѕРіРѕ РїРѕРґРїРёСЃС‡РёРєР°.
     /// </summary>
     public void Subscribe(string key, InputAction action, Action<InputAction.CallbackContext> callback, InputSubscriber.CallType callType)
     {
         ThrowIfDisposed();
-        var formatedKey = FormatKey(key, callType);
+        var formattedKey = BuildKeyPath(key, callType);
 
-        if (_subscribers.ContainsKey(formatedKey)) throw new InvalidOperationException($"such a key already exists: {formatedKey}");
+        if (_subscribers.ContainsKey(formattedKey)) throw new InvalidOperationException($"such a key already exists: {formattedKey}");
         if (callback == null) throw new ArgumentNullException(nameof(callback));
 
         var subscriber = new InputSubscriber(action, callback, callType);
-        _subscribers.Add(formatedKey, subscriber);
+        _subscribers.Add(formattedKey, subscriber);
     }
 
     public void SubscribeStarted(string key, InputAction action, Action<InputAction.CallbackContext> callback)
@@ -273,13 +275,13 @@ public class InputSubscribersContainer : IEnumerable<KeyValuePair<string, InputS
     }
 
     /// <summary>
-    /// Отключить и удалить подписчика по ключу и (опционально) типу вызова.
+    /// РћС‚РєР»СЋС‡РёС‚СЊ Рё СѓРґР°Р»РёС‚СЊ РїРѕРґРїРёСЃС‡РёРєР° РїРѕ РєР»СЋС‡Сѓ Рё (РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ) С‚РёРїСѓ РІС‹Р·РѕРІР°.
     /// </summary>
     public void Unsubscribe(string key, InputSubscriber.CallType callType)
     {
         ThrowIfDisposed();
 
-        var formatedKey = FormatKey(key, callType);
+        var formatedKey = BuildKeyPath(key, callType);
         if (_subscribers.TryGetValue(formatedKey, out var subscriber))
         {
             subscriber.Dispose();
@@ -292,60 +294,30 @@ public class InputSubscribersContainer : IEnumerable<KeyValuePair<string, InputS
     public void UnsubscribePerformed(string key) => Unsubscribe(key, InputSubscriber.CallType.OnPerformed);
     public void UnsubscribeCanceled(string key) => Unsubscribe(key, InputSubscriber.CallType.OnCanceled);
 
-    private string FormatKey(string name, InputSubscriber.CallType callType)
+    private string BuildKeyPath(string key, InputSubscriber.CallType callType)
     {
-        if (string.IsNullOrWhiteSpace(name))
-            throw new ArgumentNullException(nameof(name));
+        if (string.IsNullOrWhiteSpace(key))
+            throw new InputKeyFormatKeyException("Key is null or empty");
 
-        string typeStr = callType switch
+        var builder = new InputKeyBuilder();
+
+        // Р Р°Р·Р±РёРІР°РµРј РєР»СЋС‡ РЅР° СЃРµРіРјРµРЅС‚С‹ РїРѕ '/' Рё РґРѕР±Р°РІР»СЏРµРј РІ Р±РёР»РґРµСЂ
+        var segments = key.Split('/');
+
+        foreach (var segment in segments)
         {
-            InputSubscriber.CallType.OnStarted => CALLTYPE_STARTED,
-            InputSubscriber.CallType.OnPerformed => CALLTYPE_PERFORMED,
-            InputSubscriber.CallType.OnCanceled => CALLTYPE_CANCELED,
-            _ => throw new ArgumentOutOfRangeException(nameof(callType))
-        };
+            // РџСЂРѕР±РµР»С‹ Рё РїСѓСЃС‚С‹Рµ СЃРµРіРјРµРЅС‚С‹ РѕР±СЂР°Р±РѕС‚Р°РµС‚ Р±РёР»РґРµСЂР°
+            builder.Append(segment);
+        }
 
-        // Удаляем пробелы, приводим все к нижнему регистру и соединяем
-        string namePart = name.Trim().ToLowerInvariant().Replace(" ", "");
-        return $"{namePart}/{typeStr}";
+        builder.SetCallType(callType);
+
+        // РњРµС‚РѕРґ ToString() РІС‹Р±СЂРѕСЃРёС‚ РёСЃРєР»СЋС‡РµРЅРёРµ, РµСЃР»Рё С„РѕСЂРјР°С‚ РЅРµРІРµСЂРЅС‹Р№
+        return builder.ToString();
     }
 
     /// <summary>
-    /// Приводит строку к формату "название/тип_вызова" (без пробелов, нижний регистр, разделитель '/')
-    /// и проверяет, соответствует ли она этому формату.
-    /// </summary>
-    /// <param name="input">Входная строка.</param>
-    /// <param name="result">Преобразованная строка в требуемом формате, если успешно.</param>
-    /// <returns>True, если строка приведена к виду "название/тип_вызова", иначе false.</returns>
-    public static bool TryFormatKey(string input, out string result)
-    {
-        result = null;
-        if (string.IsNullOrWhiteSpace(input) || !input.Contains('/'))
-            return false;
-
-        // Приводим к нижнему регистру и убираем пробелы по краям
-        string formatted = input.Trim().ToLowerInvariant();
-
-        // Разбиваем по символу '/'
-        var parts = formatted.Split('/');
-        if (parts.Length != 2)
-            return false;
-
-        string name = parts[0].Trim();
-        string type = parts[1].Trim();
-
-        // Имя и тип не должны быть пустыми и не содержать пробелов
-        if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(type)
-            || name.Contains(' ') || type.Contains(' '))
-            return false;
-
-        // Собираем обратно для единообразия
-        result = $"{name}/{type}";
-        return true;
-    }
-
-    /// <summary>
-    /// Освобождает все ресурсы всех подписчиков и очищает контейнер.
+    /// РћСЃРІРѕР±РѕР¶РґР°РµС‚ РІСЃРµ СЂРµСЃСѓСЂСЃС‹ РІСЃРµС… РїРѕРґРїРёСЃС‡РёРєРѕРІ Рё РѕС‡РёС‰Р°РµС‚ РєРѕРЅС‚РµР№РЅРµСЂ.
     /// </summary>
     public void Dispose()
     {
@@ -358,18 +330,170 @@ public class InputSubscribersContainer : IEnumerable<KeyValuePair<string, InputS
         _disposed = true;
     }
 
-    /// <summary>
-    /// Реализация IEnumerable для перебора подписчиков.
-    /// </summary>
+    private void ThrowIfDisposed()
+    {
+        if (_disposed) throw new ObjectDisposedException(nameof(InputSubscribersContainer));
+    }
+
     public IEnumerator<KeyValuePair<string, InputSubscriber>> GetEnumerator()
     {
         return _subscribers.GetEnumerator();
     }
 
-    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
-
-    private void ThrowIfDisposed()
+    IEnumerator IEnumerable.GetEnumerator()
     {
-        if (_disposed) throw new ObjectDisposedException(nameof(InputSubscribersContainer));
+        return GetEnumerator();
+    }
+}
+
+public static class InputKeyFormatter
+{
+    private static readonly Regex pattern = new Regex(@"^([^/]+)(/[^/]+)*$", RegexOptions.Compiled);
+
+    /// <summary>
+    /// РџСЂРѕРІРµСЂСЏРµС‚, СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ Р»Рё СЃС‚СЂРѕРєР° С€Р°Р±Р»РѕРЅСѓ "СЃРµРіРјРµРЅС‚/СЃРµРіРјРµРЅС‚/..."
+    /// </summary>
+    public static bool IsValid(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+            return false;
+        return pattern.IsMatch(input);
+    }
+
+    /// <summary>
+    /// РџСЂРёРІРѕРґРёС‚ СЃС‚СЂРѕРєСѓ Рє С„РѕСЂРјР°С‚Сѓ "СЃРµРіРјРµРЅС‚/СЃРµРіРјРµРЅС‚/..." (Р±РµР· РїСЂРѕР±РµР»РѕРІ, СЃ РЅРёР¶РЅРёРј СЂРµРіРёСЃС‚СЂРѕРј).
+    /// Р’РѕР·РІСЂР°С‰Р°РµС‚ РѕС‚С„РѕСЂРјР°С‚РёСЂРѕРІР°РЅРЅСѓСЋ СЃС‚СЂРѕРєСѓ РёР»Рё null, РµСЃР»Рё С„РѕСЂРјР°С‚ РЅРµРєРѕСЂСЂРµРєС‚РµРЅ.
+    /// </summary>
+    public static string Format(string input)
+    {
+        if (string.IsNullOrWhiteSpace(input))
+            return null;
+
+        var segments = input.Split('/');
+
+        for (int i = 0; i < segments.Length; i++)
+        {
+            segments[i] = segments[i].Trim();
+
+            if (string.IsNullOrEmpty(segments[i]))
+                return null; // РїСѓСЃС‚РѕР№ СЃРµРіРјРµРЅС‚ вЂ” РЅРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ С„РѕСЂРјР°С‚
+        }
+
+        string formatted = string.Join("/", segments).ToLowerInvariant();
+
+        if (!IsValid(formatted))
+            return null;
+
+        return formatted;
+    }
+
+    /// <summary>
+    /// РџСЂРёРІРѕРґРёС‚ СЃС‚СЂРѕРєСѓ Рє С„РѕСЂРјР°С‚Сѓ "РЅР°Р·РІР°РЅРёРµ/С‚РёРї_РІС‹Р·РѕРІР°" (Р±РµР· РїСЂРѕР±РµР»РѕРІ, РЅРёР¶РЅРёР№ СЂРµРіРёСЃС‚СЂ, СЂР°Р·РґРµР»РёС‚РµР»СЊ '/')
+    /// Рё РїСЂРѕРІРµСЂСЏРµС‚, СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ Р»Рё РѕРЅР° СЌС‚РѕРјСѓ С„РѕСЂРјР°С‚Сѓ.
+    /// </summary>
+    /// <param name="input">Р’С…РѕРґРЅР°СЏ СЃС‚СЂРѕРєР°.</param>
+    /// <param name="result">РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРЅР°СЏ СЃС‚СЂРѕРєР° РІ С‚СЂРµР±СѓРµРјРѕРј С„РѕСЂРјР°С‚Рµ, РµСЃР»Рё СѓСЃРїРµС€РЅРѕ.</param>
+    /// <returns>True, РµСЃР»Рё СЃС‚СЂРѕРєР° РїСЂРёРІРµРґРµРЅР° Рє РІРёРґСѓ "РЅР°Р·РІР°РЅРёРµ/С‚РёРї_РІС‹Р·РѕРІР°", РёРЅР°С‡Рµ false.</returns>
+    public static bool TryFormatKey(string input, out string result)
+    {
+        result = InputKeyFormatter.Format(input);
+        return result != null;
+    }
+}
+
+public class InputKeyBuilder
+{
+    private readonly List<string> _segments = new List<string>();
+    private InputSubscriber.CallType? _callType;
+
+    private const string CALLTYPE_STARTED = "started";
+    private const string CALLTYPE_PERFORMED = "performed";
+    private const string CALLTYPE_CANCELED = "canceled";
+
+    /// <summary>
+    /// Р”РѕР±Р°РІР»СЏРµС‚ СЃРµРіРјРµРЅС‚ РІ РєР»СЋС‡.
+    /// </summary>
+    /// <param name="segment">РЎРµРіРјРµРЅС‚ РєР»СЋС‡Р° (РЅР°РїСЂРёРјРµСЂ, С‡Р°СЃС‚СЊ РЅР°Р·РІР°РЅРёСЏ).</param>
+    /// <returns>РўРµРєСѓС‰РёР№ СЌРєР·РµРјРїР»СЏСЂ Р±РёР»РґРµСЂР° (РґР»СЏ С†РµРїРѕС‡РЅРѕРіРѕ РІС‹Р·РѕРІР°).</returns>
+    /// <exception cref="ArgumentNullException">Р•СЃР»Рё segment РїСѓСЃС‚РѕР№ РёР»Рё whitespace.</exception>
+    public InputKeyBuilder Append(string segment)
+    {
+        if (string.IsNullOrWhiteSpace(segment))
+            throw new ArgumentNullException(nameof(segment), "Segment cannot be null or whitespace.");
+
+        // РќРѕСЂРјР°Р»РёР·Р°С†РёСЏ: СѓР±СЂР°С‚СЊ РїСЂРѕР±РµР»С‹, РїСЂРёРІРµСЃС‚Рё Рє РЅРёР¶РЅРµРјСѓ СЂРµРіРёСЃС‚СЂСѓ
+        string normalized = segment.Trim().ToLowerInvariant();
+
+        if (string.IsNullOrEmpty(normalized))
+            throw new ArgumentException("Segment is empty after normalization.", nameof(segment));
+
+        _segments.Add(normalized);
+        return this;
+    }
+
+    /// <summary>
+    /// РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ С‚РёРї РІС‹Р·РѕРІР°.
+    /// </summary>
+    /// <param name="type">РўРёРї РІС‹Р·РѕРІР°.</param>
+    /// <returns>РўРµРєСѓС‰РёР№ СЌРєР·РµРјРїР»СЏСЂ Р±РёР»РґРµСЂР° (РґР»СЏ С†РµРїРѕС‡РЅРѕРіРѕ РІС‹Р·РѕРІР°).</returns>
+    public InputKeyBuilder SetCallType(InputSubscriber.CallType type)
+    {
+        _callType = type;
+        return this;
+    }
+
+    /// <summary>
+    /// РЎС‚СЂРѕРёС‚ РёС‚РѕРіРѕРІС‹Р№ РєР»СЋС‡ РІ С„РѕСЂРјР°С‚Рµ "РЅР°Р·РІР°РЅРёРµ/С‚РёРї_РІС‹Р·РѕРІР°".
+    /// </summary>
+    /// <returns>РЎС‚СЂРѕРєР° РєР»СЋС‡Р°.</returns>
+    /// <exception cref="InvalidOperationException">Р•СЃР»Рё РЅРµ РґРѕР±Р°РІР»РµРЅРѕ РЅРё РѕРґРЅРѕРіРѕ СЃРµРіРјРµРЅС‚Р° РёР»Рё РЅРµ СѓСЃС‚Р°РЅРѕРІР»РµРЅ С‚РёРї РІС‹Р·РѕРІР°.</exception>
+    public override string ToString()
+    {
+        if (_segments.Count == 0)
+            throw new InvalidOperationException("No segments have been added to the key.");
+
+        if (!_callType.HasValue)
+            throw new InvalidOperationException("CallType has not been set.");
+
+        string baseKey = string.Join("/", _segments);
+
+        if (!InputKeyFormatter.IsValid(baseKey))
+            throw new InputKeyFormatKeyException($"Key format is invalid: '{baseKey}'");
+
+        string callTypeStr = _callType.Value switch
+        {
+            InputSubscriber.CallType.OnStarted => CALLTYPE_STARTED,
+            InputSubscriber.CallType.OnPerformed => CALLTYPE_PERFORMED,
+            InputSubscriber.CallType.OnCanceled => CALLTYPE_CANCELED,
+            _ => throw new ArgumentOutOfRangeException(nameof(_callType), "Unknown CallType value")
+        };
+
+        return $"{baseKey}/{callTypeStr}";
+    }
+
+    /// <summary>
+    /// РџСЂРёРјРµСЂ СЃР±СЂРѕСЃР° (РѕС‡РёСЃС‚РєРё) Р±РёР»РґРµСЂР° РґР»СЏ РїРѕРІС‚РѕСЂРЅРѕРіРѕ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ.
+    /// </summary>
+    public void Clear()
+    {
+        _segments.Clear();
+        _callType = null;
+    }
+}
+
+
+
+public class InputKeyFormatKeyException : Exception
+{
+    public InputKeyFormatKeyException()
+    {
+    }
+
+    public InputKeyFormatKeyException(string message) : base(message)
+    {
+    }
+
+    public InputKeyFormatKeyException(string message, Exception inner) : base(message, inner)
+    {
     }
 }

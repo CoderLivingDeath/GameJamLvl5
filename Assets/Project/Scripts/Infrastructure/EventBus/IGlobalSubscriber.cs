@@ -1,4 +1,4 @@
-namespace Template.Project.Infrastructure.EventBus
+namespace GameJamLvl5.Project.Infrastructure.EventBus
 {
     public interface IGlobalSubscriber
     { }

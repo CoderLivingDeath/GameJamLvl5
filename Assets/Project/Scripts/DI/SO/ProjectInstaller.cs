@@ -1,6 +1,6 @@
 using UnityEngine;
-using Template.Project.Infrastructure.EventBus;
-using Template.Project.Infrastructure.Factory;
+using GameJamLvl5.Project.Infrastructure.EventBus;
+using GameJamLvl5.Project.Infrastructure.Factory;
 using Zenject;
 
 [CreateAssetMenu(fileName = "ProjectInstaller", menuName = "Installers/ProjectInstaller")]

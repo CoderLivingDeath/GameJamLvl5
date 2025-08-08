@@ -1,13 +1,12 @@
-using Template.Project.Infrastructure.EventBus;
-using Template.Project.Infrastructure.EventBus.Subscribers;
+using GameJamLvl5.Project.Infrastructure.EventBus;
+using GameJamLvl5.Project.Infrastructure.EventBus.Subscribers;
 using UnityEngine;
 using Zenject;
 
-public class MoseTrackerBehaviour : MonoBehaviour, IMouseTrackEventHandler
+public class MoseTrackerBehaviour : MonoBehaviour, IGameplay_Mouse_PositionEventHandler
 {
     [SerializeField] private Vector2 _mousePosition;
 
-    // инъекция зависимосткй
     [Inject] EventBus _eventBus;
 
     private Vector2 ScreenToWorldMousePosition(Vector2 pos)
@@ -17,16 +16,16 @@ public class MoseTrackerBehaviour : MonoBehaviour, IMouseTrackEventHandler
     }
 
     #region Event handlers
-    public void HandleMouseTrack(Vector2 mousePosition)
+
+    public void HandleMousePosition(Vector2 position)
     {
-        _mousePosition = ScreenToWorldMousePosition(mousePosition);
+        _mousePosition = ScreenToWorldMousePosition(position);
     }
     #endregion
 
     #region Unity methods
     private void Awake()
     {
-        // регистрация обработчика в системе событий
         _eventBus.Subscribe(this);
     }
 
@@ -36,5 +35,6 @@ public class MoseTrackerBehaviour : MonoBehaviour, IMouseTrackEventHandler
 
         Gizmos.DrawWireSphere(_mousePosition, 1f);
     }
+
     #endregion
 }
