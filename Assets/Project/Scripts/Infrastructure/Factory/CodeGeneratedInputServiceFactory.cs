@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
 using GameJamLvl5.Project.Infrastructure.EventBus.Subscribers;
-using JetBrains.Annotations;
+using GameJamLvl5.Project.Scripts.Services.InputService;
 
 namespace GameJamLvl5.Project.Infrastructure.Factory
 {
@@ -57,7 +57,6 @@ namespace GameJamLvl5.Project.Infrastructure.Factory
 
             container.SubscribePerformed(INPUT_KEY_GAMEPLAY_INTERACT, actions.Gameplay.Interact, Gameplay_Interact_Handler);
             container.SubscribePerformed(INPUT_KEY_GAMEPLAY_MOUSE_POSITION, actions.Gameplay.MousePosition, Gameplay_MousePosition_Handler);
-            //TODO: реализовать ввод
 
             void Gameplay_Movement_Handler(InputAction.CallbackContext context)
             {
@@ -87,7 +86,6 @@ namespace GameJamLvl5.Project.Infrastructure.Factory
             container.SubscribePerformed(INPUT_KEY_UI_MOUSE_LEFTCLICK, actions.UI.MouseLeftClick, UI_Mouse_LeftClick_Handler);
             container.SubscribePerformed(INPUT_KEY_UI_MOUSE_RIGHTCLICK, actions.UI.MouseRightClick, UI_Mouse_RightClick_Handler);
 
-            //TODO: реализовать ввод
             void UI_Up_Handler(InputAction.CallbackContext context)
             {
                 var value = context.ReadValueAsButton();

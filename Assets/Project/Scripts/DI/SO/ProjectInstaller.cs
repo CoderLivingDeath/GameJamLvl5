@@ -2,6 +2,7 @@ using UnityEngine;
 using GameJamLvl5.Project.Infrastructure.EventBus;
 using GameJamLvl5.Project.Infrastructure.Factory;
 using Zenject;
+using GameJamLvl5.Project.Scripts.Services.InputService;
 
 [CreateAssetMenu(fileName = "ProjectInstaller", menuName = "Installers/ProjectInstaller")]
 public class ProjectInstaller : ScriptableObjectInstaller<ProjectInstaller>
