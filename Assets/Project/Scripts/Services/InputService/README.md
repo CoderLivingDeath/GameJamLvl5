@@ -15,7 +15,7 @@
 
 ---
 
-## Конструкция
+## Конструктор
 
 ```csharp
 public InputService(InputSystem_Actions inputActions, InputSubscribersContainer subscribers)
