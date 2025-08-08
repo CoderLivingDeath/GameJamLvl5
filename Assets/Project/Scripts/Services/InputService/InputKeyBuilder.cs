@@ -1,28 +1,32 @@
 using System;
 using System.Collections.Generic;
+
 namespace GameJamLvl5.Project.Scripts.Services.InputService
 {
+    /// <summary>
+    /// Builder class to construct composite input keys consisting of multiple segments and a call type.
+    /// </summary>
     public class InputKeyBuilder
     {
-        private readonly List<string> _segments = new List<string>();
-        private InputSubscriber.CallType? _callType;
-
         private const string CALLTYPE_STARTED = "started";
         private const string CALLTYPE_PERFORMED = "performed";
         private const string CALLTYPE_CANCELED = "canceled";
 
+        private readonly List<string> _segments = new List<string>();
+        private InputSubscriber.CallType? _callType;
+
         /// <summary>
-        /// Добавляет сегмент в ключ.
+        /// Adds a segment to the key.
         /// </summary>
-        /// <param name="segment">Сегмент ключа (например, часть названия).</param>
-        /// <returns>Текущий экземпляр билдера (для цепочного вызова).</returns>
-        /// <exception cref="ArgumentNullException">Если segment пустой или whitespace.</exception>
+        /// <param name="segment">Key segment (e.g., part of a name).</param>
+        /// <returns>The current builder instance (to allow method chaining).</returns>
+        /// <exception cref="ArgumentNullException">Thrown if segment is null or whitespace.</exception>
         public InputKeyBuilder Append(string segment)
         {
             if (string.IsNullOrWhiteSpace(segment))
                 throw new ArgumentNullException(nameof(segment), "Segment cannot be null or whitespace.");
 
-            // Нормализация: убрать пробелы, привести к нижнему регистру
+            // Normalize: trim whitespace and convert to lowercase
             string normalized = segment.Trim().ToLowerInvariant();
 
             if (string.IsNullOrEmpty(normalized))
@@ -33,10 +37,10 @@ namespace GameJamLvl5.Project.Scripts.Services.InputService
         }
 
         /// <summary>
-        /// Устанавливает тип вызова.
+        /// Sets the call type of the key.
         /// </summary>
-        /// <param name="type">Тип вызова.</param>
-        /// <returns>Текущий экземпляр билдера (для цепочного вызова).</returns>
+        /// <param name="type">The call type.</param>
+        /// <returns>The current builder instance (to allow method chaining).</returns>
         public InputKeyBuilder SetCallType(InputSubscriber.CallType type)
         {
             _callType = type;
@@ -44,10 +48,10 @@ namespace GameJamLvl5.Project.Scripts.Services.InputService
         }
 
         /// <summary>
-        /// Строит итоговый ключ в формате "название/тип_вызова".
+        /// Builds the final key string in the format "name/call_type".
         /// </summary>
-        /// <returns>Строка ключа.</returns>
-        /// <exception cref="InvalidOperationException">Если не добавлено ни одного сегмента или не установлен тип вызова.</exception>
+        /// <returns>The composed key string.</returns>
+        /// <exception cref="InvalidOperationException">Thrown if no segments are added or call type is not set.</exception>
         public override string ToString()
         {
             if (_segments.Count == 0)
@@ -73,7 +77,7 @@ namespace GameJamLvl5.Project.Scripts.Services.InputService
         }
 
         /// <summary>
-        /// Пример сброса (очистки) билдера для повторного использования.
+        /// Clears the builder for reuse.
         /// </summary>
         public void Clear()
         {
