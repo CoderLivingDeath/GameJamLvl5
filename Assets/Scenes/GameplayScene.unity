@@ -992,6 +992,7 @@ GameObject:
   - component: {fileID: 779860301}
   - component: {fileID: 779860304}
   - component: {fileID: 779860303}
+  - component: {fileID: 779860305}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1072,6 +1073,25 @@ MonoBehaviour:
   _directionVector: {x: 0, y: 0}
   _timing: 4
   _contactDirectionProvider: {fileID: 2014071789}
+--- !u!114 &779860305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 779860299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5631d22a609129045af31fe2a1d1ddc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Radius: 3
+  Distance: 3
+  Interactables: []
+  Mask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  _timing: 4
 --- !u!1 &930802862
 GameObject:
   m_ObjectHideFlags: 0
@@ -1218,6 +1238,8 @@ GameObject:
   - component: {fileID: 1092342207}
   - component: {fileID: 1092342206}
   - component: {fileID: 1092342205}
+  - component: {fileID: 1092342210}
+  - component: {fileID: 1092342209}
   m_Layer: 0
   m_Name: Square (6)
   m_TagString: Untagged
@@ -1362,12 +1384,40 @@ Transform:
   m_GameObject: {fileID: 1092342204}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.6419, y: -0.86429, z: 0}
+  m_LocalPosition: {x: -2.4, y: -0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1092342209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092342204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c72121da727a1c94a93683e7db3e669f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1092342210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092342204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13bd14335cf5d1348aba47a78466c8eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnInteractEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  Interaction: DebugInteracting
 --- !u!1 &1506805158
 GameObject:
   m_ObjectHideFlags: 0
