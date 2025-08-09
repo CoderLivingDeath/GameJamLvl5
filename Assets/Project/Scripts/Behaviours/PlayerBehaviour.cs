@@ -3,18 +3,16 @@ using GameJamLvl5.Project.Infrastructure.EventBus.Subscribers;
 using UnityEngine;
 using Zenject;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(MovementBehaviour))]
 public class PlayerBehaviour : MonoBehaviour, IGameplay_MovementEventHandler
 {
-    private Rigidbody2D _rigidbody2D;
-
     [Inject] private EventBus _eventBus;
 
-    private Vector2 _InputMovementDirectionVector;
+    private MovementBehaviour _movementBehaviour;
 
     public void HandleMovement(Vector2 direction)
     {
-        _InputMovementDirectionVector = direction;
+        _movementBehaviour.Move(direction);
     }
 
     #region Unity Methods
@@ -25,16 +23,7 @@ public class PlayerBehaviour : MonoBehaviour, IGameplay_MovementEventHandler
 
     private void Start()
     {
-        _rigidbody2D = GetComponent<Rigidbody2D>();
-    }
-
-    private void FixedUpdate()
-    {
-        if (_InputMovementDirectionVector != Vector2.zero)
-        {
-            var offset = _InputMovementDirectionVector / 5;
-            _rigidbody2D.MovePosition(_rigidbody2D.position + offset);
-        }
+        _movementBehaviour = GetComponent<MovementBehaviour>();
     }
     #endregion
 }
