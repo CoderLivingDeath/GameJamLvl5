@@ -7,10 +7,12 @@ using UnityEngine;
 public class InteractionBehaviour : MonoBehaviour
 {
     // Radius to check for interactable objects
-    public float Radius;
+    public float Radius = 3f;
     
     // Maximum distance for interaction (used in CircleCast)
-    public float Distance;
+    public float Distance = 3f;
+
+    public Vector2 Offset;
 
     // The currently selected interactable (the closest one)
     public InteractableBehaviour SelectedInteractable => Interactables.First();
@@ -69,7 +71,7 @@ public class InteractionBehaviour : MonoBehaviour
     // Retrieves interactables near this object's position, sorted by distance
     public IEnumerable<InteractableBehaviour> GetInteractables()
     {
-        return FindeInteractables(transform.position, Radius, Distance, Mask)
+        return FindeInteractables((Vector2)transform.position + Offset, Radius, Distance, Mask)
             .OrderBy(item => Vector2.Distance(transform.position, item.transform.position));
     }
 
@@ -108,7 +110,7 @@ public class InteractionBehaviour : MonoBehaviour
     // Draw a wire sphere in the editor representing the interaction radius
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(transform.position, Radius);
+        Gizmos.DrawWireSphere((Vector2)transform.position + Offset, Radius);
     }
 
     #endregion
