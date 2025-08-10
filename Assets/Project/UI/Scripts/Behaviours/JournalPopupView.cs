@@ -6,18 +6,32 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SettingsPopupView : ViewBehaviourBase
+public class JournalPopupView : ViewBehaviourBase
 {
     [SerializeField]
     private RectTransform _canvas;
 
     [SerializeField]
-    private Button _closebutton;
+    private Button _closeButton;
 
     #region Commands
 
+    public ICommand ShowCommand => _ShowCommand;
+    private ICommand _ShowCommand;
+
+    private void OnShowCommand(object param)
+    {
+        ShowAsync().Forget();
+    }
+
+    private bool CanShowCommand(object param)
+    {
+        return true;
+    }
+
     public ICommand CloseCommand => _closeCommand;
     private ICommand _closeCommand;
+
     private void OnCloseCommand(object param)
     {
         CloseAsync().Forget();
@@ -31,7 +45,9 @@ public class SettingsPopupView : ViewBehaviourBase
     private void CommandsSetup()
     {
         _closeCommand = new LambdaCommand(OnCloseCommand, CanCloseCommand);
+        _ShowCommand = new LambdaCommand(OnShowCommand, CanShowCommand);
     }
+
     #endregion
 
     private Vector2 CalculateTargetPosition(Vector2 canvasSize, Vector2 elementSize, Vector2 currentAnchoredPosition)
@@ -42,6 +58,12 @@ public class SettingsPopupView : ViewBehaviourBase
 
     private async UniTask AnimateClose()
     {
+        if (_canvas == null)
+        {
+            Debug.LogError("Canvas is not assigned in JournalPopupView!");
+            return;
+        }
+
         RectTransform thisUIElement = (RectTransform)transform;
         Vector2 canvasSize = _canvas.rect.size;
         Vector2 elementSize = thisUIElement.rect.size;
@@ -66,8 +88,21 @@ public class SettingsPopupView : ViewBehaviourBase
 
     private void Start()
     {
-        CommandsSetup();
+        if (_closeButton == null)
+        {
+            Debug.LogError("CloseButton is not assigned in JournalPopupView!");
+            return;
+        }
 
-        _closebutton.onClick.AddListener(() => _closeCommand.Execute(null));
+        CommandsSetup();
+        _closeButton.onClick.AddListener(() => _closeCommand.Execute(null));
+    }
+
+    private void OnDestroy()
+    {
+        if (_closeButton != null)
+        {
+            _closeButton.onClick.RemoveAllListeners();
+        }
     }
 }
