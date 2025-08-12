@@ -8,7 +8,10 @@ public class PlayerBehaviour : MonoBehaviour, IGameplay_MovementEventHandler, IG
 {
     [Inject] private EventBus _eventBus;
 
+    public MovementBehaviour MovementBehaviour => _movementBehaviour;
     private MovementBehaviour _movementBehaviour;
+
+    public InteractionBehaviour InteractionBehaviour => _interactionBehaviour;
     private InteractionBehaviour _interactionBehaviour;
 
     public void HandleInteract(bool button)

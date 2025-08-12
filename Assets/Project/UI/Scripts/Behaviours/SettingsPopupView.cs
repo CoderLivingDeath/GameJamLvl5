@@ -5,14 +5,19 @@ using DG.Tweening;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
-public class SettingsPopupView : ViewBehaviourBase
+public class SettingsPopupView : MonoBehaviour
 {
     [SerializeField]
     private RectTransform _canvas;
 
     [SerializeField]
     private Button _closebutton;
+
+    private bool _isAnimating;
+
+    private Ease _ease = Ease.OutCubic;
 
     #region Commands
 
@@ -28,11 +33,31 @@ public class SettingsPopupView : ViewBehaviourBase
         return true;
     }
 
+    public ICommand ShowCommand => _ShowCommand;
+    private ICommand _ShowCommand;
+
+    private void OnShowCommand(object param)
+    {
+        ShowAsync().Forget();
+    }
+
+    private bool CanShowCommand(object param)
+    {
+        return true;
+    }
+
     private void CommandsSetup()
     {
         _closeCommand = new LambdaCommand(OnCloseCommand, CanCloseCommand);
+        _ShowCommand = new LambdaCommand(OnShowCommand, CanShowCommand);
     }
     #endregion
+
+    [Inject]
+    private void Construct()
+    {
+        CommandsSetup();
+    }
 
     private Vector2 CalculateTargetPosition(Vector2 canvasSize, Vector2 elementSize, Vector2 currentAnchoredPosition)
     {
@@ -42,31 +67,78 @@ public class SettingsPopupView : ViewBehaviourBase
 
     private async UniTask AnimateClose()
     {
-        RectTransform thisUIElement = (RectTransform)transform;
-        Vector2 canvasSize = _canvas.rect.size;
-        Vector2 elementSize = thisUIElement.rect.size;
-        Vector2 targetPosition = CalculateTargetPosition(canvasSize, elementSize, thisUIElement.anchoredPosition);
+        if (_isAnimating || _canvas == null)
+        {
+            if (_canvas == null) Debug.LogError("Canvas is not assigned in JournalPopupView!");
+            return;
+        }
 
-        await thisUIElement.DOAnchorPos(targetPosition, 1f).AsyncWaitForCompletion();
+        _isAnimating = true;
+
+        try
+        {
+            RectTransform thisUIElement = (RectTransform)transform;
+            Vector2 canvasSize = _canvas.rect.size;
+            Vector2 elementSize = thisUIElement.rect.size;
+            Vector2 targetPosition = CalculateTargetPosition(canvasSize, elementSize, thisUIElement.anchoredPosition);
+
+            var moveTween = thisUIElement.DOAnchorPos(targetPosition, 1f).SetEase(_ease);
+
+            await moveTween.AsyncWaitForCompletion();
+        }
+        finally
+        {
+            _isAnimating = false;
+        }
     }
 
-    public override async UniTask ShowAsync()
+    private async UniTask AnimateOpen()
     {
+        if (_isAnimating || _canvas == null)
+        {
+            if (_canvas == null) Debug.LogError("Canvas is not assigned in JournalPopupView!");
+            return;
+        }
+
+        _isAnimating = true;
+
+        try
+        {
+            RectTransform thisUIElement = (RectTransform)transform;
+            Vector2 canvasSize = _canvas.rect.size;
+            Vector2 elementSize = thisUIElement.rect.size;
+            Vector2 startPosition = CalculateTargetPosition(canvasSize, elementSize, thisUIElement.anchoredPosition);
+
+            thisUIElement.anchoredPosition = startPosition;
+            var moveTween = thisUIElement.DOAnchorPos(Vector2.zero, 1f).SetEase(_ease);
+
+            await moveTween.AsyncWaitForCompletion();
+        }
+        finally
+        {
+            _isAnimating = false;
+        }
+    }
+
+    private async UniTask ShowAsync()
+    {
+        if (_isAnimating) return;
+
         gameObject.SetActive(true);
-
-        RectTransform thisRectTransform = (RectTransform)transform;
-        await thisRectTransform.DOAnchorPos(Vector2.zero, 1f).AsyncWaitForCompletion();
+        await AnimateOpen();
     }
 
-    public override async UniTask CloseAsync()
+    private async UniTask CloseAsync()
     {
+        if (_isAnimating) return;
+
         await AnimateClose();
         gameObject.SetActive(false);
     }
 
-    private void Start()
+
+    private void Awake()
     {
-        CommandsSetup();
 
         _closebutton.onClick.AddListener(() => _closeCommand.Execute(null));
     }

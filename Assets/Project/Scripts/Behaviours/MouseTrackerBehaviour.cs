@@ -3,7 +3,7 @@ using GameJamLvl5.Project.Infrastructure.EventBus.Subscribers;
 using UnityEngine;
 using Zenject;
 
-public class MoseTrackerBehaviour : MonoBehaviour, IGameplay_Mouse_PositionEventHandler
+public class MouseTrackerBehaviour : MonoBehaviour, IGameplay_Mouse_PositionEventHandler
 {
     [SerializeField] private Vector2 _mousePosition;
 
