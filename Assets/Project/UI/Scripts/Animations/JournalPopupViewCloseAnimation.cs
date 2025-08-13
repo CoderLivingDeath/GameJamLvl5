@@ -25,9 +25,14 @@ public class JournalPopupViewCloseAnimation : UIAnimation<JournalPopupView>
         RectTransform journalRect = (RectTransform)context.JournalGroup.transform;
         journalRect.localScale = Vector2.one;
 
+        Color bgcolor = context.Background.color;
+        context.Background.color = new Color(bgcolor.r, bgcolor.g, bgcolor.b, 1f);
+
         Tween scaleTween = journalRect.DOScale(Vector3.one * 0.9f, Duration)
             .SetEase(Ease)
             .SetUpdate(true);
+
+        context.Background.DOColor(new Color(bgcolor.r, bgcolor.g, bgcolor.b, 0f), 1f).SetEase(Ease);
 
         await scaleTween.AsyncWaitForCompletion();
 

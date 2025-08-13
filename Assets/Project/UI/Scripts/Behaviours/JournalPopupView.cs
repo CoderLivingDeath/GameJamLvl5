@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using TMPro;
@@ -25,6 +26,10 @@ public class JournalPopupView : MonoBehaviour
     public CanvasGroup JournalGroup => _journalGroup;
     [SerializeField]
     private CanvasGroup _journalGroup;
+
+    public Image Background => _background;
+    [SerializeField]
+    private Image _background;
 
     [SerializeField]
     private Button _closeButton;
@@ -59,28 +64,28 @@ public class JournalPopupView : MonoBehaviour
         Entries.Add(value);
     }
 
-    public ICommand ShowCommand => _showCommand;
-    private ICommand _showCommand;
+    public IAsyncCommand ShowCommand => _showCommand;
+    private IAsyncCommand _showCommand;
 
-    private void OnShowCommand(object param)
+    private async UniTask OnShowCommand(object param)
     {
         var value = (ShowContext)param;
 
-        ShowAsync(value).Forget();
+        await ShowAsync(value);
     }
 
-    public ICommand CloseCommand => _closeCommand;
-    private ICommand _closeCommand;
+    public IAsyncCommand CloseCommand => _closeCommand;
+    private IAsyncCommand _closeCommand;
 
-    private void OnCloseCommand(object param)
+    private async UniTask OnCloseCommand(object param)
     {
-        CloseAsync().Forget();
+        await CloseAsync();
     }
 
     private void CommandsSetup()
     {
-        _closeCommand = new LambdaCommand(OnCloseCommand);
-        _showCommand = new LambdaCommand(OnShowCommand);
+        _closeCommand = new LambdaAsyncCommand(OnCloseCommand);
+        _showCommand = new LambdaAsyncCommand(OnShowCommand);
         _AddJournalEntryCommand = new LambdaCommand(OnAddJournalEntryCommand);
     }
 
@@ -156,7 +161,7 @@ public class JournalPopupView : MonoBehaviour
 
     private void OnEnable()
     {
-        _closeButton.onClick.AddListener(() => _closeCommand.Execute(null));
+        _closeButton.onClick.AddListener(() => _closeCommand.ExecuteAsync(null));
     }
 
     private void OnDestroy()

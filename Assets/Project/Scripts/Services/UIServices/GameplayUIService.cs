@@ -10,14 +10,14 @@ public class GameplayUIService
         _gameplayUiViewsProvider = gameplayUiViewsProvider;
     }
 
-    public void ShowJournalPopup(JournalPopupView.ShowContext context)
+    public async UniTask ShowJournalPopup(JournalPopupView.ShowContext context)
     {
-        _gameplayUiViewsProvider.JournalPopupView.ShowCommand.Execute(context);
+        await _gameplayUiViewsProvider.JournalPopupView.ShowCommand.ExecuteAsync(context);
     }
 
-    public void CloseJournalPopup()
+    public async UniTask CloseJournalPopup()
     {
-        _gameplayUiViewsProvider.JournalPopupView.CloseCommand.Execute(null);
+        await _gameplayUiViewsProvider.JournalPopupView.CloseCommand.ExecuteAsync(null);
     }
 
     public void AddEntryInJournalPopup(string entry)

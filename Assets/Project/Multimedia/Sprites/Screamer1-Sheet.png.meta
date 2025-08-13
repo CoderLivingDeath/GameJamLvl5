@@ -1,0 +1,925 @@
+fileFormatVersion: 2
+guid: 95ac0f6e70ebcf34b91d8750385a04e2
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2315404835763131686
+    second: Screamer1-Sheet_0
+  - first:
+      213: 2038167547103930490
+    second: Screamer1-Sheet_1
+  - first:
+      213: 1400852083827824495
+    second: Screamer1-Sheet_2
+  - first:
+      213: 1033905409568381363
+    second: Screamer1-Sheet_3
+  - first:
+      213: -4054924599556065500
+    second: Screamer1-Sheet_4
+  - first:
+      213: 9065960612475133734
+    second: Screamer1-Sheet_5
+  - first:
+      213: -7439073591581267294
+    second: Screamer1-Sheet_6
+  - first:
+      213: 1498433877384706197
+    second: Screamer1-Sheet_7
+  - first:
+      213: 4788820914020353950
+    second: Screamer1-Sheet_8
+  - first:
+      213: -827153747434043203
+    second: Screamer1-Sheet_9
+  - first:
+      213: 1196533351049315443
+    second: Screamer1-Sheet_10
+  - first:
+      213: 7956245475605363144
+    second: Screamer1-Sheet_11
+  - first:
+      213: -1149600134381100871
+    second: Screamer1-Sheet_12
+  - first:
+      213: 5498249207085758186
+    second: Screamer1-Sheet_13
+  - first:
+      213: 3606813843996042378
+    second: Screamer1-Sheet_14
+  - first:
+      213: -2088461353899303042
+    second: Screamer1-Sheet_15
+  - first:
+      213: 515896418144459396
+    second: Screamer1-Sheet_16
+  - first:
+      213: 4212473251709826701
+    second: Screamer1-Sheet_17
+  - first:
+      213: 908890619304485493
+    second: Screamer1-Sheet_18
+  - first:
+      213: -6473719166410816612
+    second: Screamer1-Sheet_19
+  - first:
+      213: 4565742357817019702
+    second: Screamer1-Sheet_20
+  - first:
+      213: -5392854454834063028
+    second: Screamer1-Sheet_21
+  - first:
+      213: -1473851160565624928
+    second: Screamer1-Sheet_22
+  - first:
+      213: -8403625829288524031
+    second: Screamer1-Sheet_23
+  - first:
+      213: 1254379084339119958
+    second: Screamer1-Sheet_24
+  - first:
+      213: 4210362752687470036
+    second: Screamer1-Sheet_25
+  - first:
+      213: 1828978426750778270
+    second: Screamer1-Sheet_26
+  - first:
+      213: -3699108271818304
+    second: Screamer1-Sheet_27
+  - first:
+      213: 85466467642028891
+    second: Screamer1-Sheet_28
+  - first:
+      213: 1236115806554122297
+    second: Screamer1-Sheet_29
+  - first:
+      213: 4397612527277830259
+    second: Screamer1-Sheet_30
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Screamer1-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 0
+        width: 43
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62512ea3e68f12020800000000000000
+      internalID: 2315404835763131686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screamer1-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 0
+        width: 45
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a78ebddd596094c10800000000000000
+      internalID: 2038167547103930490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screamer1-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 0
+        width: 45
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f675c675c83d07310800000000000000
+      internalID: 1400852083827824495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screamer1-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 0
+        width: 45
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b99dacfd7b295e00800000000000000
+      internalID: 1033905409568381363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screamer1-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 0
+        width: 44
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 427b7748f830ab7c0800000000000000
+      internalID: -4054924599556065500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screamer1-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 685
+        y: 0
+        width: 50
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62f534eb423c0dd70800000000000000
+      internalID: 9065960612475133734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screamer1-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 0
+        width: 78
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2aa2fcb7bf913c890800000000000000
+      internalID: -7439073591581267294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screamer1-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 927
+        y: 0
+        width: 76
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5983de42ca18bc410800000000000000
+      internalID: 1498433877384706197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screamer1-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 1059
+        y: 0
+        width: 70
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e970521cf3f457240800000000000000
+      internalID: 4788820914020353950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screamer1-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 1187
+        y: 0
+        width: 70
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db88f859c0c5584f0800000000000000
+      internalID: -827153747434043203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screamer1-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 1316
+        y: 0
+        width: 70
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 374c3374eb0fa9010800000000000000
+      internalID: 1196533351049315443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screamer1-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 1444
+        y: 0
+        width: 70
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c934472b134a6e60800000000000000
+      internalID: 7956245475605363144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screamer1-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 1572
+        y: 0
+        width: 70
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b02974c4cccb00f0800000000000000
+      internalID: -1149600134381100871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screamer1-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 1700
+        y: 0
+        width: 70
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae67bead584bd4c40800000000000000
+      internalID: 5498249207085758186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screamer1-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 1828
+        y: 0
+        width: 70
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a846856d41afd0230800000000000000
+      internalID: 3606813843996042378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screamer1-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 0
+        width: 70
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7f53b9b67b4403e0800000000000000
+      internalID: -2088461353899303042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screamer1-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 2084
+        y: 0
+        width: 69
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48a95681f05d82700800000000000000
+      internalID: 515896418144459396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screamer1-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 2212
+        y: 0
+        width: 69
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d86bff19a16b57a30800000000000000
+      internalID: 4212473251709826701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screamer1-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 2340
+        y: 0
+        width: 69
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5722457e3370d9c00800000000000000
+      internalID: 908890619304485493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screamer1-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 2467
+        y: 0
+        width: 70
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c930276a7bab826a0800000000000000
+      internalID: -6473719166410816612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screamer1-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 2595
+        y: 0
+        width: 70
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63d43adeb76cc5f30800000000000000
+      internalID: 4565742357817019702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screamer1-Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 2723
+        y: 0
+        width: 70
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c499b36227bb825b0800000000000000
+      internalID: -5392854454834063028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screamer1-Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 2851
+        y: 0
+        width: 70
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0af40b2ad24db8be0800000000000000
+      internalID: -1473851160565624928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screamer1-Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 2979
+        y: 0
+        width: 70
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 107c5f325d2506b80800000000000000
+      internalID: -8403625829288524031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screamer1-Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 3107
+        y: 0
+        width: 70
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65786b79123786110800000000000000
+      internalID: 1254379084339119958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screamer1-Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 3246
+        y: 0
+        width: 49
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d5f879bd963e6a30800000000000000
+      internalID: 4210362752687470036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screamer1-Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 3378
+        y: 0
+        width: 43
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9b35545036d16910800000000000000
+      internalID: 1828978426750778270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screamer1-Sheet_27
+      rect:
+        serializedVersion: 2
+        x: 3506
+        y: 0
+        width: 43
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c9f87d3eabd2fff0800000000000000
+      internalID: -3699108271818304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screamer1-Sheet_28
+      rect:
+        serializedVersion: 2
+        x: 3634
+        y: 0
+        width: 44
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b53b20cac43af2100800000000000000
+      internalID: 85466467642028891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screamer1-Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 3762
+        y: 0
+        width: 44
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93867eed6c0972110800000000000000
+      internalID: 1236115806554122297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Screamer1-Sheet_30
+      rect:
+        serializedVersion: 2
+        x: 3891
+        y: 0
+        width: 43
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 370f3344b45770d30800000000000000
+      internalID: 4397612527277830259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 398738316bb947b4da757a6d9a54aec1
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Screamer1-Sheet_0: 2315404835763131686
+      Screamer1-Sheet_1: 2038167547103930490
+      Screamer1-Sheet_10: 1196533351049315443
+      Screamer1-Sheet_11: 7956245475605363144
+      Screamer1-Sheet_12: -1149600134381100871
+      Screamer1-Sheet_13: 5498249207085758186
+      Screamer1-Sheet_14: 3606813843996042378
+      Screamer1-Sheet_15: -2088461353899303042
+      Screamer1-Sheet_16: 515896418144459396
+      Screamer1-Sheet_17: 4212473251709826701
+      Screamer1-Sheet_18: 908890619304485493
+      Screamer1-Sheet_19: -6473719166410816612
+      Screamer1-Sheet_2: 1400852083827824495
+      Screamer1-Sheet_20: 4565742357817019702
+      Screamer1-Sheet_21: -5392854454834063028
+      Screamer1-Sheet_22: -1473851160565624928
+      Screamer1-Sheet_23: -8403625829288524031
+      Screamer1-Sheet_24: 1254379084339119958
+      Screamer1-Sheet_25: 4210362752687470036
+      Screamer1-Sheet_26: 1828978426750778270
+      Screamer1-Sheet_27: -3699108271818304
+      Screamer1-Sheet_28: 85466467642028891
+      Screamer1-Sheet_29: 1236115806554122297
+      Screamer1-Sheet_3: 1033905409568381363
+      Screamer1-Sheet_30: 4397612527277830259
+      Screamer1-Sheet_4: -4054924599556065500
+      Screamer1-Sheet_5: 9065960612475133734
+      Screamer1-Sheet_6: -7439073591581267294
+      Screamer1-Sheet_7: 1498433877384706197
+      Screamer1-Sheet_8: 4788820914020353950
+      Screamer1-Sheet_9: -827153747434043203
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

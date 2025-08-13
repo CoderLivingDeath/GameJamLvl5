@@ -22,6 +22,7 @@ namespace GameJamLvl5.Project.Scripts.behaviours.Interaction.InteractableHandler
         {
             if (isWasInteracted == true) return;
             _progressionController.HandleItemInteraction(ItemId).Forget();
+            isWasInteracted = true;
         }
     }
 }

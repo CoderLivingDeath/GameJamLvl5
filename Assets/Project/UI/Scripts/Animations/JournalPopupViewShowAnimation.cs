@@ -28,10 +28,16 @@ public class JournalPopupViewShowAnimation : UIAnimation<JournalPopupView>
         RectTransform journalRect = (RectTransform)context.JournalGroup.transform;
         journalRect.localScale = Vector2.one * 0.9f;
 
+        Color bgcolor = context.Background.color;
+        context.Background.color = new Color(bgcolor.r, bgcolor.g, bgcolor.b, 0f);
+
         Tween moveTween = thisUIElement.DOAnchorPos(Vector2.zero, Duration)
             .SetEase(Ease);
 
+        context.Background.DOColor(new Color(bgcolor.r, bgcolor.g, bgcolor.b, 1f), 1f).SetEase(Ease);
+
         await moveTween.AsyncWaitForCompletion().AsUniTask();
+
 
         Tween scaleTween = journalRect.DOScale(Vector3.one, 0.3f)
             .SetEase(Ease);

@@ -106,7 +106,7 @@ public class Meanings
         return tone switch
         {
             "cult" => cult.tone_cult,
-            "doctor" => doctor.tone_doc,
+            "doctor" => doctor.tone_doctor,
             "island" => island.tone_island,
             "fail" => throw new ArgumentException($"Unavalibe tone: {tone}"),
             _ => throw new ArgumentException($"Unknown tone: {tone}")
@@ -122,7 +122,7 @@ public class Meaning
 
     public string tone_cult { get; set; }
 
-    public string tone_doc { get; set; }
+    public string tone_doctor { get; set; }
     public string tone_island { get; set; }
 }
 
