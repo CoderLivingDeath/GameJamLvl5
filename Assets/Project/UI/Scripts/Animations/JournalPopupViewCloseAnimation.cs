@@ -26,7 +26,7 @@ public class JournalPopupViewCloseAnimation : UIAnimation<JournalPopupView>
         journalRect.localScale = Vector2.one;
 
         Color bgcolor = context.Background.color;
-        context.Background.color = new Color(bgcolor.r, bgcolor.g, bgcolor.b, 1f);
+        // context.Background.color = new Color(bgcolor.r, bgcolor.g, bgcolor.b, 1f);
 
         Tween scaleTween = journalRect.DOScale(Vector3.one * 0.9f, Duration)
             .SetEase(Ease)

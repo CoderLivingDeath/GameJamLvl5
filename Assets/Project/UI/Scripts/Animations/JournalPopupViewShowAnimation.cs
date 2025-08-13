@@ -33,8 +33,10 @@ public class JournalPopupViewShowAnimation : UIAnimation<JournalPopupView>
 
         Tween moveTween = thisUIElement.DOAnchorPos(Vector2.zero, Duration)
             .SetEase(Ease);
-
-        context.Background.DOColor(new Color(bgcolor.r, bgcolor.g, bgcolor.b, 1f), 1f).SetEase(Ease);
+        if (DarkBackground)
+        {
+            context.Background.DOColor(new Color(bgcolor.r, bgcolor.g, bgcolor.b, 1f), 1f).SetEase(Ease);
+        }
 
         await moveTween.AsyncWaitForCompletion().AsUniTask();
 

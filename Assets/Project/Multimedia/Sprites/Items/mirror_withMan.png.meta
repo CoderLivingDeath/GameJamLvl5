@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a53451817e49c324f81d63f001f599e6
+guid: 52201e50d7fe3e64cb41fd1569455198
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4011672603642963727
-    second: Rorsharh_1_0
+      213: -8465751667883729441
+    second: mirror_withMan_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -74,7 +74,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Rorsharh_1_0
+      name: mirror_withMan_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 477
-        height: 337
+        width: 137
+        height: 294
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1f8d1b0950da358c0800000000000000
-      internalID: -4011672603642963727
+      spriteID: fdd9e1726bb938a80800000000000000
+      internalID: -8465751667883729441
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Rorsharh_1_0: -4011672603642963727
+      mirror_withMan_0: -8465751667883729441
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
