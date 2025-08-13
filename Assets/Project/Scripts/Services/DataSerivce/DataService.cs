@@ -3,113 +3,126 @@ using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
 using System.Linq;
+using Unity.Mathematics;
 
 public class DataService
 {
-    public enum Root
-    {
-        SoftCult, HardCult,
-        SoftDoc, HardDoc,
-        SoftIsland, HardIsland,
-        neutral
-    }
-
+    public Root Root => _root;
+    private Root _root;
     public ItemsRoot ItemsData => _itemsData;
     private ItemsRoot _itemsData;
 
-    private Root _currentRoot = Root.neutral;
-
-    public event Action<Root> RootChanged;
-
-    // public DataService()
-    // {
-    //     TextAsset dataAsset = Resources.Load<TextAsset>("LocationsData"); // загрузка текстового файла из Resources
-    //     if (dataAsset == null)
-    //     {
-    //         Debug.LogError("Не удалось загрузить LocationsData из Resources");
-    //         return;
-    //     }
-
-    //     string json = dataAsset.text; // получение строки JSON из TextAsset
-
-    //     Debug.Log(json);
-    //     _itemsData = JsonConvert.DeserializeObject<ItemsRoot>(json);
-    // }
-
-
-    public void SetRoot(Root root)
+    public DataService()
     {
-        if (root != _currentRoot)
+        TextAsset dataAsset = Resources.Load<TextAsset>("LocationsData"); // загрузка текстового файла из Resources
+        if (dataAsset == null)
         {
-            _currentRoot = root;
-            RootChanged?.Invoke(root);
+            Debug.LogError("Не удалось загрузить LocationsData из Resources");
+            return;
+        }
+
+        string json = dataAsset.text; // получение строки JSON из TextAsset
+
+        _itemsData = JsonConvert.DeserializeObject<ItemsRoot>(json);
+    }
+
+    public string GetMaxTon()
+    {
+        if (Root.Cult >= Root.Doc && Root.Cult >= Root.Island)
+            return "cult";
+        else if (Root.Doc >= Root.Cult && Root.Doc >= Root.Island)
+            return "doctor";
+        else if (Root.Island >= Root.Doc && Root.Island >= Root.Cult)
+            return "island";
+        else
+        {
+            return "neutral";
         }
     }
 
-    // private Dictionary<string, Item> GetAllItems()
-    // {
-    //     return LocationsData.GetAllItems().ToDictionary((item) => item.name);
-    // }
 
-    public Root GetRoot() => _currentRoot;
+    public void AddRootTag(RootEnum rootEnum)
+    {
+        switch (rootEnum)
+        {
+            case RootEnum.Cult:
+                _root.Cult += 1;
+                break;
+            case RootEnum.Doctor:
+                _root.Doc += 1;
+                break;
+            case RootEnum.Island:
+                _root.Island += 1;
+                break;
+        }
+    }
 }
 
-public class StringToRootConverter
+public struct Root
 {
-    // Использование Enum.Parse (с выбросом исключения при ошибке)
-    public static DataService.Root ConvertUsingParse(string input)
-    {
-        try
-        {
-            return (DataService.Root)Enum.Parse(typeof(DataService.Root), input, true); // true для игнорирования регистра
-        }
-        catch (ArgumentException)
-        {
-            throw new ArgumentException($"Недопустимое значение '{input}' для перечисления Root");
-        }
-    }
+    public int Cult;
+    public int Doc;
+    public int Island;
 
-    // Использование Enum.TryParse (безопасный способ)
-    public static bool TryConvertUsingTryParse(string input, out DataService.Root result)
+    public override string ToString()
     {
-        return Enum.TryParse<DataService.Root>(input, true, out result) && Enum.IsDefined(typeof(DataService.Root), result);
+        return $"Cult:{Cult}, Doc:{Doc}, Island:{Island}";
     }
+}
+
+public enum RootEnum
+{
+    Cult,
+    Doctor,
+    Island
 }
 
 public class ItemsRoot
 {
-    public List<Item> Items { get; set; } = new List<Item>();
+    public List<Item> items { get; set; }
 }
 
 public class Item
 {
-    public string? Id { get; set; }
+    public string id { get; set; }
 
-    public string Name { get; set; } = string.Empty;
+    public string name { get; set; }
 
-    public Meanings Meanings { get; set; } = new Meanings();
+    public Meanings meanings { get; set; }
 }
 
 public class Meanings
 {
-    public Meaning Cult { get; set; } = new Meaning();
+    public Meaning cult { get; set; } = new Meaning();
 
-    public Meaning Doctor { get; set; } = new Meaning();
+    public Meaning doctor { get; set; } = new Meaning();
 
-    public Meaning Island { get; set; } = new Meaning();
+    public Meaning island { get; set; } = new Meaning();
 
-    public Meaning Fail { get; set; } = new Meaning();
+    public Meaning fail { get; set; } = new Meaning();
+
+    public string GetTone(string tone)
+    {
+        return tone switch
+        {
+            "cult" => cult.tone_cult,
+            "doctor" => doctor.tone_doc,
+            "island" => island.tone_island,
+            "fail" => throw new ArgumentException($"Unavalibe tone: {tone}"),
+            _ => throw new ArgumentException($"Unknown tone: {tone}")
+        };
+    }
 }
 
 public class Meaning
 {
-    public string Tag { get; set; } = string.Empty;
+    public string tag { get; set; }
 
-    public string Text { get; set; } = string.Empty;
+    public string text { get; set; }
 
-    public string ToneCult { get; set; } = string.Empty;
+    public string tone_cult { get; set; }
 
-    public string ToneDoc { get; set; } = string.Empty;
-    public string ToneIsland { get; set; } = string.Empty;
+    public string tone_doc { get; set; }
+    public string tone_island { get; set; }
 }
 

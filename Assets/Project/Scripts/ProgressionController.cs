@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
@@ -16,28 +17,54 @@ public class ProgressionController
 
     public async UniTask HandleItemInteraction(string itemId)
     {
-        //Item item = _dataService.ItemsData.items.Where((item) => item.id == itemId).First();
+        Item item = _dataService.ItemsData.items.Where((item) => item.id == itemId).First();
 
         interactionCount += 1;
+        // TODO: сделять
         Sprite Sprite = default;
-        string SelectionOneText = "item-1";
-        string SelectionTwoText = "item-2";
-        string SelectionThreeText = "item-3";
-        string SelectionFourText = "item-4";
-        string OneSelectId = "item-select-1";
-        string TwoSelectId = "item-select-2";
-        string ThreeSelectId = "item-select-3";
-        string FourSelectId = "item-select-4";
+
+        // TODO: рандомить
+        string SelectionOneText = item.meanings.cult.text;
+        string SelectionTwoText = item.meanings.doctor.text;
+        string SelectionThreeText = item.meanings.island.text;
+        string SelectionFourText = item.meanings.fail.text;
+
+        string OneSelectTag = item.meanings.cult.tag;
+        string TwoSelectTag = item.meanings.doctor.tag;
+        string ThreeSelectTag = item.meanings.island.tag;
+        string FourSelectTag = item.meanings.fail.tag;
 
         PerceptionSelectionView.SetupContext setupContext = new(Sprite, SelectionOneText, SelectionTwoText, SelectionThreeText, SelectionFourText,
-        OneSelectId, TwoSelectId, ThreeSelectId, FourSelectId);
+        OneSelectTag, TwoSelectTag, ThreeSelectTag, FourSelectTag);
 
         _gameplayUIService.SetupPrecepririonSelectionView(setupContext);
 
         var scope = _gameplayUIService.ShowPrecepririonSelectionView();
 
-        string id = await scope.AwaitForSelect();
-        Debug.Log(id);
+        string selectedTag = await scope.AwaitForSelect();
+
+        if (selectedTag == "fail")
+        {
+            Debug.Log("Ты умер");
+
+
+            return;
+        }
+
+        RootEnum tagEnum = (RootEnum)Enum.Parse(typeof(RootEnum), selectedTag, true);
+
+        _dataService.AddRootTag(tagEnum);
+
+        string tone = _dataService.GetMaxTon();
+
+        if (tone == "neutral")
+        {
+            tone = selectedTag;
+        }
+
+        string newEntry = item.meanings.GetTone(tone);
+
+        _gameplayUIService.AddEntryInJournalPopup(newEntry);
 
         _gameplayUIService.ClosePrecepririonSelectionView();
 
