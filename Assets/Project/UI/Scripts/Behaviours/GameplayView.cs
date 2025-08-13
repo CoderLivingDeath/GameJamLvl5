@@ -4,15 +4,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using Cysharp.Threading.Tasks;
+using Zenject;
 
-public class GameplayView : ViewBehaviourBase
+public class GameplayView : MonoBehaviour
 {
 
-    [SerializeField]
-    private ViewBehaviourBase _settingsPopup;
+    [Inject]
+    private SettingsPopupView _settingsPopup;
 
-    [SerializeField]
-    private ViewBehaviourBase _journalPopup;
+    [Inject]
+    private JournalPopupView _journalPopup;
 
     [SerializeField]
     private Button _showSettingsPopupButton;
@@ -22,31 +23,32 @@ public class GameplayView : ViewBehaviourBase
 
     #region Commands
 
-
     public ICommand ShowJournalPopupCommand => _ShowJournalPopupCommand;
     private ICommand _ShowJournalPopupCommand;
 
     private void OnShowJournalPopupCommand(object param)
     {
-        _journalPopup.ShowAsync().Forget();
+        _journalPopup.ShowCommand.Execute(null);
     }
 
     private bool CanShowJournalPopupCommand(object param)
     {
         return true;
     }
+
     public ICommand ShowSettingPopupCommand => _ShowSettingPopupCommand;
     private ICommand _ShowSettingPopupCommand;
 
     private void OnShowSettingPopupCommand(object param)
     {
-        _settingsPopup.ShowAsync().Forget();
+        _settingsPopup.ShowCommand.Execute(null);
     }
 
     private bool CanShowSettingPopupCommand(object param)
     {
         return true;
     }
+
     private void CommandsSetup()
     {
         _ShowSettingPopupCommand = new LambdaCommand(OnShowSettingPopupCommand, CanShowSettingPopupCommand);
@@ -54,23 +56,23 @@ public class GameplayView : ViewBehaviourBase
     }
     #endregion
 
-    public override async UniTask ShowAsync()
-    {
-        gameObject.SetActive(true);
-        await UniTask.CompletedTask;
-    }
+    [Inject]
+    private GameplayUIService _gameplayUIService;
 
-    public override async UniTask CloseAsync()
-    {
-        gameObject.SetActive(false);
-        await UniTask.CompletedTask;
-    }
-
-    private void Start()
+    [Inject]
+    private void Construct()
     {
         CommandsSetup();
+    }
 
-        _showSettingsPopupButton.onClick.AddListener(() => ShowSettingPopupCommand.Execute(null));
-        _showJournalPopupButton.onClick.AddListener(() => ShowJournalPopupCommand.Execute(null));
+    private void OnEnable()
+    {
+        _showSettingsPopupButton.onClick.AddListener(() => _gameplayUIService.ShowSettingsPopup());
+        _showJournalPopupButton.onClick.AddListener(() => _gameplayUIService.ShowJournalPopup(new JournalPopupView.ShowContext(false)));
+    }
+
+    private void OnDisable()
+    {
+
     }
 }

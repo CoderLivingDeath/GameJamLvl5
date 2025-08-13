@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Warm.Project.Scripts.behaviours.Interaction.InteractableHandlers
+namespace GameJamLvl5.Project.Scripts.behaviours.Interaction.InteractableHandlers
 {
     [InteractableComponent]
     public class DebugInteracting : InteractableHandlerBehaviourBase
