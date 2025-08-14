@@ -1,15 +1,18 @@
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ScrimmerSpawner : MonoBehaviour
+public class Trigger : MonoBehaviour
 {
-    public GameObject prefab;
-    public Transform Point;
+    public UnityEvent OnTriggerEnter;
+    public UnityEvent OnTriggerExit;
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Instantiate(prefab, Point.position, quaternion.identity);
-        Destroy(gameObject);
+        OnTriggerEnter?.Invoke();
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        OnTriggerExit?.Invoke();
     }
 }

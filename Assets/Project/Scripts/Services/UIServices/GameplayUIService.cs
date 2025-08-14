@@ -10,14 +10,18 @@ public class GameplayUIService
         _gameplayUiViewsProvider = gameplayUiViewsProvider;
     }
 
-    public async UniTask ShowJournalPopup(JournalPopupView.ShowContext context)
+    public JournalPopupAwaitScope ShowJournalPopup(JournalPopupView.ShowContext context)
     {
-        await _gameplayUiViewsProvider.JournalPopupView.ShowCommand.ExecuteAsync(context);
+        _gameplayUiViewsProvider.JournalPopupView.ShowCommand.ExecuteAsync(context);
+        JournalPopupAwaitScope scope = new(_gameplayUiViewsProvider.JournalPopupView);
+        return scope;
     }
 
-    public async UniTask CloseJournalPopup()
+    public JournalPopupAwaitScope CloseJournalPopup()
     {
-        await _gameplayUiViewsProvider.JournalPopupView.CloseCommand.ExecuteAsync(null);
+        _gameplayUiViewsProvider.JournalPopupView.CloseCommand.ExecuteAsync(null);
+        JournalPopupAwaitScope scope = new(_gameplayUiViewsProvider.JournalPopupView);
+        return scope;
     }
 
     public void AddEntryInJournalPopup(string entry)
@@ -84,5 +88,25 @@ public class PerceptionSelectionScope
     public async UniTask<string> AwaitForSelect()
     {
         return await _view.AwaitForSelect();
+    }
+}
+
+public class JournalPopupAwaitScope
+{
+    private JournalPopupView _journalPopupView;
+
+    public JournalPopupAwaitScope(JournalPopupView journalPopupView)
+    {
+        _journalPopupView = journalPopupView;
+    }
+
+    public async UniTask AwaitClose()
+    {
+        await _journalPopupView.AwaitClose();
+    }
+
+    public async UniTask AwaitShow()
+    {
+        await _journalPopupView.AwaitShow();
     }
 }

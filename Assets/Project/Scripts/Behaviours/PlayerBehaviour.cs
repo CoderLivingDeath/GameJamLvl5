@@ -16,6 +16,8 @@ public class PlayerBehaviour : MonoBehaviour, IGameplay_MovementEventHandler, IG
     public InteractionBehaviour InteractionBehaviour => _interactionBehaviour;
     private InteractionBehaviour _interactionBehaviour;
     [Inject] private EventBus _eventBus;
+
+    [Inject] private SoundManager soundManager;
     public void HandleInteract(bool button)
     {
         _interactionBehaviour.Interact();
@@ -36,6 +38,8 @@ public class PlayerBehaviour : MonoBehaviour, IGameplay_MovementEventHandler, IG
     {
         _movementBehaviour = GetComponent<MovementBehaviour>();
         _interactionBehaviour = GetComponent<InteractionBehaviour>();
+
+        soundManager.SoundVolume = 0;
     }
     #endregion
 }

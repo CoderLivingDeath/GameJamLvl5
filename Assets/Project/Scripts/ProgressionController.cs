@@ -1,7 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
+using GameJamLvl5.Project.Infrastructure.EventBus;
 using GameJamLvl5.Project.Scripts.Services.InputService;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -30,12 +32,18 @@ public class ProgressionController
     [Inject]
     private PlayerBehaviour _player;
 
+    [Inject]
+    private EventBus _eventBus;
+
     private int interactionCount = 0;
     private int currentLelv = 1;
     private bool isGameOver = false;
 
+    [Inject] private SoundManager soundManager;
+
     public async UniTask HandleItemInteraction(string itemId)
     {
+        soundManager.SoundVolume = 0;
         _inputService.Disable();
         try
         {
@@ -48,16 +56,36 @@ public class ProgressionController
                 return;
             }
 
-            // TODO: рандомить
-            string SelectionOneText = item.meanings.cult.text;
-            string SelectionTwoText = item.meanings.doctor.text;
-            string SelectionThreeText = item.meanings.island.text;
-            string SelectionFourText = item.meanings.fail.text;
+            // Сбор оригинальных пар
+            List<SelectionOption> options = new List<SelectionOption>()
+{
+    new SelectionOption(item.meanings.cult.text, item.meanings.cult.tag),
+    new SelectionOption(item.meanings.doctor.text, item.meanings.doctor.tag),
+    new SelectionOption(item.meanings.island.text, item.meanings.island.tag),
+    new SelectionOption(item.meanings.fail.text, item.meanings.fail.tag),
+};
 
-            string OneSelectTag = item.meanings.cult.tag;
-            string TwoSelectTag = item.meanings.doctor.tag;
-            string ThreeSelectTag = item.meanings.island.tag;
-            string FourSelectTag = item.meanings.fail.tag;
+            // Перемешиваем список
+            for (int i = 0; i < options.Count; i++)
+            {
+                int randomIndex = UnityEngine.Random.Range(i, options.Count);
+                SelectionOption temp = options[i];
+                options[i] = options[randomIndex];
+                options[randomIndex] = temp;
+            }
+
+            // Теперь options[0..3] — перемешанные пары текст-тег:
+            string SelectionOneText = options[0].Text;
+            string OneSelectTag = options[0].Tag;
+
+            string SelectionTwoText = options[1].Text;
+            string TwoSelectTag = options[1].Tag;
+
+            string SelectionThreeText = options[2].Text;
+            string ThreeSelectTag = options[2].Tag;
+
+            string SelectionFourText = options[3].Text;
+            string FourSelectTag = options[3].Tag;
 
             PerceptionSelectionView.SetupContext setupContext = new(Sprite, SelectionOneText, SelectionTwoText, SelectionThreeText, SelectionFourText,
             OneSelectTag, TwoSelectTag, ThreeSelectTag, FourSelectTag);
@@ -107,7 +135,10 @@ public class ProgressionController
             else
             {
                 var context = new JournalPopupView.ShowContext(false);
-                await _gameplayUIService.ShowJournalPopup(context);
+                var journalAwait = _gameplayUIService.ShowJournalPopup(context);
+                await journalAwait.AwaitShow();
+                Debug.Log("1");
+                _eventBus.RaiseEvent<IProgressionEventHandler>(h => h.HandleProgressionEvent("journalFullScreen"));
             }
 
         }
@@ -115,6 +146,7 @@ public class ProgressionController
         {
             if (!isGameOver)
                 _inputService.Enable();
+            _eventBus.RaiseEvent<IProgressionEventHandler>(h => h.HandleProgressionEvent("playerFree"));
         }
     }
 
@@ -123,7 +155,8 @@ public class ProgressionController
         if (currentLelv == 1)
         {
             var context = new JournalPopupView.ShowContext(true);
-            await _gameplayUIService.ShowJournalPopup(context);
+            var journalAwait = _gameplayUIService.ShowJournalPopup(context);
+            await journalAwait.AwaitShow();
             _player.transform.position = _gameplaySceneAssets.L2SpawnPoint.position;
             _cameraController.SetNewBoundingShape(_gameplaySceneAssets.L2CameraBounds);
             currentLelv = 2;
@@ -132,7 +165,8 @@ public class ProgressionController
         if (currentLelv == 2)
         {
             var context = new JournalPopupView.ShowContext(true);
-            await _gameplayUIService.ShowJournalPopup(context);
+            var journalAwait = _gameplayUIService.ShowJournalPopup(context);
+            await journalAwait.AwaitShow();
             _player.transform.position = _gameplaySceneAssets.L3SpawnPoint.position;
             _cameraController.SetNewBoundingShape(_gameplaySceneAssets.L3CameraBounds);
             currentLelv = 3;
@@ -140,5 +174,17 @@ public class ProgressionController
         }
 
         throw new Exception("АААА БЛЯТЬ!!!111");
+    }
+}
+
+public struct SelectionOption
+{
+    public string Text;
+    public string Tag;
+
+    public SelectionOption(string text, string tag)
+    {
+        Text = text;
+        Tag = tag;
     }
 }

@@ -29,7 +29,7 @@ public class GameplayView : MonoBehaviour
     private void OnShowJournalPopupCommand(object param)
     {
         JournalPopupView.ShowContext context = new(false);
-        _gameplayUIService.ShowJournalPopup(context).Forget();
+        _gameplayUIService.ShowJournalPopup(context);
     }
 
     private bool CanShowJournalPopupCommand(object param)
@@ -69,7 +69,7 @@ public class GameplayView : MonoBehaviour
     private void OnEnable()
     {
         _showSettingsPopupButton.onClick.AddListener(() => _gameplayUIService.ShowSettingsPopup());
-        _showJournalPopupButton.onClick.AddListener(() => _gameplayUIService.ShowJournalPopup(new JournalPopupView.ShowContext(false)).Forget());
+        _showJournalPopupButton.onClick.AddListener(() => _gameplayUIService.ShowJournalPopup(new JournalPopupView.ShowContext(false)));
     }
 
     private void OnDisable()

@@ -39,6 +39,9 @@ public class JournalPopupView : MonoBehaviour
     public bool IsAnimating => _isAnimating;
     private bool _isAnimating;
 
+    private UniTaskCompletionSource _closeTcs;
+    private UniTaskCompletionSource _showTcs;
+
     private CompositeDisposable _disposables = new CompositeDisposable();
 
 
@@ -123,7 +126,7 @@ public class JournalPopupView : MonoBehaviour
         JournalPopupViewShowAnimation animation = new(ShowDuration, ShowEase, context.DarkBackground);
         gameObject.SetActive(true);
         await animation.RunAsync(this);
-
+        _showTcs?.TrySetResult();
         _isAnimating = false;
     }
 
@@ -136,7 +139,26 @@ public class JournalPopupView : MonoBehaviour
         await animation.RunAsync(this);
         gameObject.SetActive(false);
 
+        _closeTcs?.TrySetResult();
+        _closeTcs = null;
+
         _isAnimating = false;
+    }
+
+    /// <summary>
+    /// Ожидать, пока окно не будет закрыто пользователем.
+    /// Повторный вызов закрывает только по следующему закрытию окна.
+    /// </summary>
+    public UniTask AwaitClose()
+    {
+        _closeTcs = new UniTaskCompletionSource();
+        return _closeTcs.Task;
+    }
+
+    public UniTask AwaitShow()
+    {
+        _showTcs = new UniTaskCompletionSource();
+        return _showTcs.Task;
     }
 
     private void AddText(string text)

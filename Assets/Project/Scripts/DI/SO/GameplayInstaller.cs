@@ -31,6 +31,7 @@ public class GameplayInstaller : ScriptableObjectInstaller<GameplayInstaller>
         // services
         Container.BindInterfacesAndSelfTo<GameplayUIService>().AsSingle();
         Container.BindInterfacesAndSelfTo<DataService>().AsSingle().NonLazy();
+        Container.BindInterfacesAndSelfTo<SoundManager>().AsSingle().NonLazy();
 
         Container.BindInterfacesAndSelfTo<CameraController>().AsSingle().NonLazy();
         Container.BindInterfacesAndSelfTo<ProgressionController>().AsSingle().NonLazy();

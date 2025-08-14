@@ -152,7 +152,7 @@ public class InteractableBehaviour : InteractableBehaviourBase
     // Check if the interaction can be performed (stub, returns true always)
     public bool CanIneract()
     {
-        return true;
+        return this.enabled;
     }
 
     // Override of Interact method from base class, invoked by interactor
