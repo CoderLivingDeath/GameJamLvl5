@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c910f021c92f8043a3ff06d742eff53, type: 3}
   m_Name: GameplayInstaller
   m_EditorClassIdentifier: 
+  _assetsSO: {fileID: 11400000, guid: 9258b3038c510fc49ac44d056888f1e7, type: 2}

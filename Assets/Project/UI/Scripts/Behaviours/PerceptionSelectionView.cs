@@ -98,6 +98,34 @@ public class PerceptionSelectionView : MonoBehaviour
         if (param.Sprite == null) return;
         // Обновляем текстуру
         _itemImage.texture = param.Sprite.texture;
+        _itemImage.SetNativeSize();
+
+        RectTransform rt = _itemImage.rectTransform;
+        RectTransform parentRect = rt.parent as RectTransform;
+        if (parentRect != null)
+        {
+            // Устанавливаем anchor и pivot в центр (если нужно)
+            rt.anchorMin = new Vector2(0.5f, 0.5f);
+            rt.anchorMax = new Vector2(0.5f, 0.5f);
+            rt.pivot = new Vector2(0.5f, 0.5f);
+
+            // Сбрасываем позицию к центру родителя
+            rt.anchoredPosition = Vector2.zero;
+        }
+
+        // Высота родительского элемента
+        float parentHeight = parentRect.rect.height;
+
+        // Размеры спрайта в пикселях
+        float spriteWidth = param.Sprite.rect.width;
+        float spriteHeight = param.Sprite.rect.height;
+
+        // Расчёт ширины с сохранением пропорций:
+        float width = parentHeight * (spriteWidth / spriteHeight);
+        float height = parentHeight;
+
+        // Применяем размеры к дочернему элементу
+        rt.sizeDelta = new Vector2(width, height);
     }
 
     private void SetButtonText(Button button, string text)

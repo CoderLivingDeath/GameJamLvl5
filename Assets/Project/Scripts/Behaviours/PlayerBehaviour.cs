@@ -3,17 +3,19 @@ using GameJamLvl5.Project.Infrastructure.EventBus.Subscribers;
 using UnityEngine;
 using Zenject;
 
-[RequireComponent(typeof(MovementBehaviour), typeof(InteractionBehaviour))]
+[RequireComponent(typeof(MovementBehaviour), typeof(InteractionBehaviour), typeof(AudioSource))]
 public class PlayerBehaviour : MonoBehaviour, IGameplay_MovementEventHandler, IGameplay_InteractEventHandler
 {
-    [Inject] private EventBus _eventBus;
+    public AudioSource StepsAudio => _stepsAudio;
+    [SerializeField]
+    private AudioSource _stepsAudio;
 
     public MovementBehaviour MovementBehaviour => _movementBehaviour;
     private MovementBehaviour _movementBehaviour;
 
     public InteractionBehaviour InteractionBehaviour => _interactionBehaviour;
     private InteractionBehaviour _interactionBehaviour;
-
+    [Inject] private EventBus _eventBus;
     public void HandleInteract(bool button)
     {
         _interactionBehaviour.Interact();

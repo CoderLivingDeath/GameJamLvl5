@@ -12,3 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c34da7204ebe269449d8873d98ca1a84, type: 3}
   m_Name: AssetsSO
   m_EditorClassIdentifier: 
+  l1_rorsharh: {fileID: 21300000, guid: a53451817e49c324f81d63f001f599e6, type: 3}
+  l1_piplls: {fileID: 21300000, guid: 0bd639eef121ec74fbf07bd070662c43, type: 3}
+  l1_statue: {fileID: 21300000, guid: 7f03853eba8384e45a161973211a0fd1, type: 3}
+  l2_painting: {fileID: 21300000, guid: c99daff8053bb9d41865bcd3431bbb34, type: 3}
+  l2_clock: {fileID: 8581363780399802525, guid: ebea761a27ab80647ad2c5d493816c49, type: 3}
+  l2_mirror: {fileID: 1766558057140839139, guid: 7dcaae4590ea38a4c972f9424e740b1b, type: 3}
+  l3_book: {fileID: 0}
+  l3_journal: {fileID: 0}
+  l3_map: {fileID: 4804446361586417100, guid: c9f06b42c3d56184a8bcaa802d46cb90, type: 3}

@@ -20,10 +20,12 @@ public class GameplayInstaller : ScriptableObjectInstaller<GameplayInstaller>
         Container.BindInterfacesAndSelfTo<JournalPopupView>().FromComponentInHierarchy().AsSingle().NonLazy();
         Container.BindInterfacesAndSelfTo<GameplayView>().FromComponentInHierarchy().AsSingle().NonLazy();
         Container.BindInterfacesAndSelfTo<PerceptionSelectionView>().FromComponentInHierarchy().AsSingle().NonLazy();
+        Container.BindInterfacesAndSelfTo<GameOverView>().FromComponentInHierarchy().AsSingle().NonLazy();
         Container.BindInterfacesAndSelfTo<DebugView>().FromComponentInHierarchy().AsSingle().NonLazy();
 
         // providers
         Container.BindInterfacesAndSelfTo<AssetsSO>().FromInstance(_assetsSO).AsSingle().NonLazy();
+        Container.BindInterfacesAndSelfTo<AssetsProvider>().AsSingle().NonLazy();
         Container.BindInterfacesAndSelfTo<GameplayUIViewsProvider>().AsSingle();
 
         // services

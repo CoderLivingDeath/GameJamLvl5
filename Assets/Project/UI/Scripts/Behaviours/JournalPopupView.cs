@@ -135,7 +135,7 @@ public class JournalPopupView : MonoBehaviour
         JournalPopupViewCloseAnimation animation = new(CloseDuration, CloseEase);
         await animation.RunAsync(this);
         gameObject.SetActive(false);
-        
+
         _isAnimating = false;
     }
 

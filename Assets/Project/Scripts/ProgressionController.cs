@@ -25,10 +25,14 @@ public class ProgressionController
     private GameplaySceneAssets _gameplaySceneAssets;
 
     [Inject]
+    private AssetsProvider _assetsProvider;
+
+    [Inject]
     private PlayerBehaviour _player;
 
     private int interactionCount = 0;
     private int currentLelv = 1;
+    private bool isGameOver = false;
 
     public async UniTask HandleItemInteraction(string itemId)
     {
@@ -37,9 +41,12 @@ public class ProgressionController
         {
             Item item = _dataService.ItemsData.items.Where((item) => item.id == itemId).First();
 
-            interactionCount += 1;
-            // TODO: сделять
-            Sprite Sprite = default;
+            Sprite Sprite = _assetsProvider.GetItemSprite(itemId);
+            if (Sprite == null)
+            {
+                Debug.LogError("sprite is null");
+                return;
+            }
 
             // TODO: рандомить
             string SelectionOneText = item.meanings.cult.text;
@@ -65,6 +72,10 @@ public class ProgressionController
             {
                 Debug.Log("Ты умер");
                 _gameplayUIService.ClosePrecepririonSelectionView();
+
+                //TODO: скример
+                isGameOver = true;
+                _gameplayUIService.ShowGameOverView().Forget();
                 return;
             }
 
@@ -86,10 +97,12 @@ public class ProgressionController
 
             _gameplayUIService.ClosePrecepririonSelectionView();
 
+            interactionCount += 1;
             await UniTask.WaitForSeconds(1);
             if (interactionCount > 2)
             {
                 await HandleNextLevel();
+                interactionCount = 0;
             }
             else
             {
@@ -100,7 +113,8 @@ public class ProgressionController
         }
         finally
         {
-            _inputService.Enable();
+            if (!isGameOver)
+                _inputService.Enable();
         }
     }
 
@@ -112,6 +126,7 @@ public class ProgressionController
             await _gameplayUIService.ShowJournalPopup(context);
             _player.transform.position = _gameplaySceneAssets.L2SpawnPoint.position;
             _cameraController.SetNewBoundingShape(_gameplaySceneAssets.L2CameraBounds);
+            currentLelv = 2;
             return;
         }
         if (currentLelv == 2)
@@ -120,6 +135,7 @@ public class ProgressionController
             await _gameplayUIService.ShowJournalPopup(context);
             _player.transform.position = _gameplaySceneAssets.L3SpawnPoint.position;
             _cameraController.SetNewBoundingShape(_gameplaySceneAssets.L3CameraBounds);
+            currentLelv = 3;
             return;
         }
 

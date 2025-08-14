@@ -60,6 +60,16 @@ public class GameplayUIService
     {
         _gameplayUiViewsProvider.DebugView.CloseCommand.Execute(null);
     }
+
+    public async UniTask ShowGameOverView()
+    {
+        await _gameplayUiViewsProvider.GameOverView.ShowCommand.ExecuteAsync(null);
+    }
+
+    public async UniTask CloseGameOverView()
+    {
+        await _gameplayUiViewsProvider.GameOverView.CloseCommand.ExecuteAsync(null);
+    }
 }
 
 public class PerceptionSelectionScope

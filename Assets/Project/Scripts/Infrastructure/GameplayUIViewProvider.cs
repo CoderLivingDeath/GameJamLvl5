@@ -18,6 +18,9 @@ public class GameplayUIViewsProvider
     public DebugView DebugView => _debugView;
     [Inject] private DebugView _debugView;
 
+    public GameOverView GameOverView => _gameOverView;
+    [Inject] private GameOverView _gameOverView;
+
     public GameplayUIViewsProvider()
     {
 
