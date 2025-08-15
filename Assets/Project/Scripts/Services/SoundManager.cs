@@ -16,8 +16,6 @@ public class SoundManager
     private void Construct()
     {
         mixer = _assets.AudioMixer;
-        SoundVolume = 1f;
-        Debug.Log($"cound volume set to: {SoundVolume}");
     }
 
     // Свойство для громкости музыки (0..1)

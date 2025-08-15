@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b0085eb2115c0604097cf981ba481b0d
+guid: 21b6fce852ffc9d4aa787752ccb88ca8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6154029278838350875
-    second: finalostrov_0
+      213: 7301913204367722191
+    second: "\u0441\u0442\u043E\u043B_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: finalostrov_0
+      name: "\u0441\u0442\u043E\u043B_0"
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1280
-        height: 720
+        x: 14
+        y: 1
+        width: 69
+        height: 122
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5eb9c71f9fe789aa0800000000000000
-      internalID: -6154029278838350875
+      spriteID: fc682174f5b955560800000000000000
+      internalID: 7301913204367722191
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      finalostrov_0: -6154029278838350875
+      "\u0441\u0442\u043E\u043B_0": 7301913204367722191
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -5,128 +5,87 @@ using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using GameJamLvl5.Project.Infrastructure.EventBus;
 using GameJamLvl5.Project.Scripts.Services.InputService;
-using Unity.Cinemachine;
 using UnityEngine;
 using Zenject;
 
 public class ProgressionController
 {
-    [Inject]
-    private GameplayUIService _gameplayUIService;
+    #region Injected Services
 
-    [Inject]
-    private DataService _dataService;
-
-    [Inject]
-    private InputService _inputService;
-
-    [Inject]
-    private CameraController _cameraController;
-
-    [Inject]
-    private GameplaySceneAssets _gameplaySceneAssets;
-
-    [Inject]
-    private AssetsProvider _assetsProvider;
-
-    [Inject]
-    private PlayerBehaviour _player;
-
-    [Inject]
-    private EventBus _eventBus;
-
-    private int interactionCount = 0;
-    private int currentLelv = 1;
-    private bool isGameOver = false;
-
+    [Inject] private GameplayUIService _gameplayUIService;
+    [Inject] private DataService _dataService;
+    [Inject] private InputService _inputService;
+    [Inject] private CameraController _cameraController;
+    [Inject] private GameplaySceneAssets _gameplaySceneAssets;
+    [Inject] private AssetsProvider _assetsProvider;
+    [Inject] private PlayerBehaviour _player;
+    [Inject] private EventBus _eventBus;
     [Inject] private SoundManager soundManager;
 
+    #endregion
+
+    #region State
+
+    private int interactionCount = 0;
+    private int currentLevel = 1;
+    private bool isGameOver = false;
+
+    #endregion
+
+    #region Public API
+
+    /// <summary>
+    /// Обрабатывает взаимодействие с предметом.
+    /// </summary>
     public async UniTask HandleItemInteraction(string itemId)
     {
         soundManager.SoundVolume = 0;
         _inputService.Disable();
+
         try
         {
-            Item item = _dataService.ItemsData.items.Where((item) => item.id == itemId).First();
-
-            Sprite Sprite = _assetsProvider.GetItemSprite(itemId);
-            if (Sprite == null)
+            Item item = _dataService.ItemsData.items.FirstOrDefault(i => i.id == itemId);
+            if (item == null)
             {
-                Debug.LogError("sprite is null");
+                Debug.LogError($"Item with id '{itemId}' not found.");
                 return;
             }
 
-            // Сбор оригинальных пар
-            List<SelectionOption> options = new List<SelectionOption>()
-{
-    new SelectionOption(item.meanings.cult.text, item.meanings.cult.tag),
-    new SelectionOption(item.meanings.doctor.text, item.meanings.doctor.tag),
-    new SelectionOption(item.meanings.island.text, item.meanings.island.tag),
-    new SelectionOption(item.meanings.fail.text, item.meanings.fail.tag),
-};
-
-            // Перемешиваем список
-            for (int i = 0; i < options.Count; i++)
+            Sprite sprite = _assetsProvider.GetItemSprite(itemId);
+            if (sprite == null)
             {
-                int randomIndex = UnityEngine.Random.Range(i, options.Count);
-                SelectionOption temp = options[i];
-                options[i] = options[randomIndex];
-                options[randomIndex] = temp;
+                Debug.LogError("Sprite is null.");
+                return;
             }
 
-            // Теперь options[0..3] — перемешанные пары текст-тег:
-            string SelectionOneText = options[0].Text;
-            string OneSelectTag = options[0].Tag;
+            List<SelectionOption> options = BuildSelectionOptions(item);
+            ShuffleOptions(options);
 
-            string SelectionTwoText = options[1].Text;
-            string TwoSelectTag = options[1].Tag;
-
-            string SelectionThreeText = options[2].Text;
-            string ThreeSelectTag = options[2].Tag;
-
-            string SelectionFourText = options[3].Text;
-            string FourSelectTag = options[3].Tag;
-
-            PerceptionSelectionView.SetupContext setupContext = new(Sprite, SelectionOneText, SelectionTwoText, SelectionThreeText, SelectionFourText,
-            OneSelectTag, TwoSelectTag, ThreeSelectTag, FourSelectTag);
-
+            PerceptionSelectionView.SetupContext setupContext = CreateSetupContext(sprite, options);
             _gameplayUIService.SetupPrecepririonSelectionView(setupContext);
 
             var scope = _gameplayUIService.ShowPrecepririonSelectionView();
-
             string selectedTag = await scope.AwaitForSelect();
+
+            _eventBus.RaiseEvent<IProgressionEventHandler>(h => h.HandleProgressionEvent(itemId + "_event_preceptionSelected"));
 
             if (selectedTag == "fail")
             {
-                Debug.Log("Ты умер");
+                _eventBus.RaiseEvent<IProgressionEventHandler>(h => h.HandleProgressionEvent(itemId + "_event_fail"));
                 _gameplayUIService.ClosePrecepririonSelectionView();
 
-                //TODO: скример
+                // TODO: скример
                 isGameOver = true;
                 _gameplayUIService.ShowGameOverView().Forget();
                 return;
             }
 
-            RootEnum tagEnum = (RootEnum)Enum.Parse(typeof(RootEnum), selectedTag, true);
-
-            _dataService.AddRootTag(tagEnum);
-
-            string tone = _dataService.GetMaxTon();
-
-            if (tone == "neutral")
-            {
-                tone = selectedTag;
-            }
-
-            string newEntry = item.meanings.GetTone(tone);
-            newEntry = $"[{tone}]\n" + newEntry;
-            Debug.Log(newEntry);
-            _gameplayUIService.AddEntryInJournalPopup(newEntry);
-
+            HandleTagSelection(item, selectedTag);
             _gameplayUIService.ClosePrecepririonSelectionView();
 
-            interactionCount += 1;
+            interactionCount++;
             await UniTask.WaitForSeconds(1);
+
             if (interactionCount > 2)
             {
                 await HandleNextLevel();
@@ -134,57 +93,120 @@ public class ProgressionController
             }
             else
             {
-                var context = new JournalPopupView.ShowContext(false);
-                var journalAwait = _gameplayUIService.ShowJournalPopup(context);
-                await journalAwait.AwaitShow();
-                Debug.Log("1");
-                _eventBus.RaiseEvent<IProgressionEventHandler>(h => h.HandleProgressionEvent("journalFullScreen"));
+                await ShowJournalPopup(itemId);
             }
-
         }
         finally
         {
             if (!isGameOver)
                 _inputService.Enable();
+
             _eventBus.RaiseEvent<IProgressionEventHandler>(h => h.HandleProgressionEvent("playerFree"));
         }
     }
 
+    /// <summary>
+    /// Переходит на следующий уровень.
+    /// </summary>
     public async UniTask HandleNextLevel()
     {
-        if (currentLelv == 1)
+        switch (currentLevel)
         {
-            var context = new JournalPopupView.ShowContext(true);
-            var journalAwait = _gameplayUIService.ShowJournalPopup(context);
-            await journalAwait.AwaitShow();
-            _player.transform.position = _gameplaySceneAssets.L2SpawnPoint.position;
-            _cameraController.SetNewBoundingShape(_gameplaySceneAssets.L2CameraBounds);
-            currentLelv = 2;
-            return;
+            case 1:
+                await MovePlayerToNextLevel(_gameplaySceneAssets.L2SpawnPoint.position, _gameplaySceneAssets.L2CameraBounds, 2);
+                break;
+            case 2:
+                await MovePlayerToNextLevel(_gameplaySceneAssets.L3SpawnPoint.position, _gameplaySceneAssets.L3CameraBounds, 3);
+                break;
+            default:
+                throw new Exception("АААА БЛЯТЬ!!!111");
         }
-        if (currentLelv == 2)
-        {
-            var context = new JournalPopupView.ShowContext(true);
-            var journalAwait = _gameplayUIService.ShowJournalPopup(context);
-            await journalAwait.AwaitShow();
-            _player.transform.position = _gameplaySceneAssets.L3SpawnPoint.position;
-            _cameraController.SetNewBoundingShape(_gameplaySceneAssets.L3CameraBounds);
-            currentLelv = 3;
-            return;
-        }
-
-        throw new Exception("АААА БЛЯТЬ!!!111");
     }
-}
 
-public struct SelectionOption
-{
-    public string Text;
-    public string Tag;
+    #endregion
 
-    public SelectionOption(string text, string tag)
+    #region Private Methods
+
+    private List<SelectionOption> BuildSelectionOptions(Item item)
     {
-        Text = text;
-        Tag = tag;
+        return new List<SelectionOption>
+        {
+            new SelectionOption(item.meanings.cult.text,   item.meanings.cult.tag),
+            new SelectionOption(item.meanings.doctor.text, item.meanings.doctor.tag),
+            new SelectionOption(item.meanings.island.text, item.meanings.island.tag),
+            new SelectionOption(item.meanings.fail.text,   item.meanings.fail.tag)
+        };
     }
+
+    private void ShuffleOptions(List<SelectionOption> options)
+    {
+        for (int i = 0; i < options.Count; i++)
+        {
+            int randomIndex = UnityEngine.Random.Range(i, options.Count);
+            (options[i], options[randomIndex]) = (options[randomIndex], options[i]);
+        }
+    }
+
+    private PerceptionSelectionView.SetupContext CreateSetupContext(Sprite sprite, List<SelectionOption> options)
+    {
+        return new PerceptionSelectionView.SetupContext(
+            sprite,
+            options[0].Text, options[1].Text, options[2].Text, options[3].Text,
+            options[0].Tag, options[1].Tag, options[2].Tag, options[3].Tag
+        );
+    }
+
+    private void HandleTagSelection(Item item, string selectedTag)
+    {
+        RootEnum tagEnum = (RootEnum)Enum.Parse(typeof(RootEnum), selectedTag, true);
+        _dataService.AddRootTag(tagEnum);
+
+        string tone = _dataService.GetMaxTon();
+        if (tone == "neutral")
+            tone = selectedTag;
+
+        string newEntry = $"[{tone}]\n{item.meanings.GetTone(tone)}";
+        Debug.Log(newEntry);
+        _gameplayUIService.AddEntryInJournalPopup(newEntry);
+    }
+
+    private async UniTask ShowJournalPopup(string itemId)
+    {
+        var context = new JournalPopupView.ShowContext(false);
+        var journalAwait = _gameplayUIService.ShowJournalPopup(context);
+        await journalAwait.AwaitShow();
+
+        _eventBus.RaiseEvent<IProgressionEventHandler>(h => h.HandleProgressionEvent(itemId + "_event_journalFullscreen"));
+        _eventBus.RaiseEvent<IProgressionEventHandler>(h => h.HandleProgressionEvent("journalFullScreen"));
+    }
+
+    private async UniTask MovePlayerToNextLevel(Vector3 spawnPosition, PolygonCollider2D cameraBounds, int nextLevel)
+    {
+        var context = new JournalPopupView.ShowContext(true);
+        var journalAwait = _gameplayUIService.ShowJournalPopup(context);
+        await journalAwait.AwaitShow();
+
+        _player.transform.position = spawnPosition;
+        _cameraController.SetNewBoundingShape(cameraBounds);
+        currentLevel = nextLevel;
+    }
+
+
+    #endregion
+
+    #region Structs
+
+    public struct SelectionOption
+    {
+        public string Text;
+        public string Tag;
+
+        public SelectionOption(string text, string tag)
+        {
+            Text = text;
+            Tag = tag;
+        }
+    }
+
+    #endregion
 }
