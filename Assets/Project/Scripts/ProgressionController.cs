@@ -116,11 +116,34 @@ public class ProgressionController
                 await MovePlayerToNextLevel(_gameplaySceneAssets.L2SpawnPoint.position, _gameplaySceneAssets.L2CameraBounds, 2);
                 break;
             case 2:
-                await MovePlayerToNextLevel(_gameplaySceneAssets.L3SpawnPoint.position, _gameplaySceneAssets.L3CameraBounds, 3);
+
+                await HandleTherdLevel();
                 break;
             default:
                 throw new Exception("АААА БЛЯТЬ!!!111");
         }
+    }
+
+    public async UniTask HandleTherdLevel()
+    {
+        switch (_dataService.GetMaxTon())
+        {
+            case "cult":
+                await MovePlayerToNextLevel(_gameplaySceneAssets.L3SpawnPoints[0].position, _gameplaySceneAssets.L3CameraBounds[0], 2);
+                break;
+            case "doctor":
+
+                await MovePlayerToNextLevel(_gameplaySceneAssets.L3SpawnPoints[1].position, _gameplaySceneAssets.L3CameraBounds[1], 2);
+                break;
+            case "island":
+
+                await MovePlayerToNextLevel(_gameplaySceneAssets.L3SpawnPoints[2].position, _gameplaySceneAssets.L3CameraBounds[2], 2);
+                break;
+            default:
+                throw new Exception("АААА БЛЯТЬ!!!111");
+        }
+
+        //await MovePlayerToNextLevel(_gameplaySceneAssets.L3SpawnPoint.position, _gameplaySceneAssets.L3CameraBounds, 3);
     }
 
     #endregion
