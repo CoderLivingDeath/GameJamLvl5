@@ -1,5 +1,6 @@
 using GameJamLvl5.Project.Infrastructure.EventBus;
 using GameJamLvl5.Project.Infrastructure.EventBus.Subscribers;
+using GameJamLvl5.Project.Scripts.Services.InputService;
 using UnityEngine;
 using Zenject;
 
@@ -16,6 +17,7 @@ public class PlayerBehaviour : MonoBehaviour, IGameplay_MovementEventHandler, IG
     public InteractionBehaviour InteractionBehaviour => _interactionBehaviour;
     private InteractionBehaviour _interactionBehaviour;
     [Inject] private EventBus _eventBus;
+    [Inject] private InputService _inputService;
 
     public void HandleInteract(bool button)
     {
@@ -38,6 +40,21 @@ public class PlayerBehaviour : MonoBehaviour, IGameplay_MovementEventHandler, IG
         _movementBehaviour = GetComponent<MovementBehaviour>();
         _interactionBehaviour = GetComponent<InteractionBehaviour>();
 
+    }
+
+    private void InputService_OnDisabled(string filter)
+    {
+        _movementBehaviour.Move(Vector2.zero);
+    }
+
+    void OnEnable()
+    {
+        _inputService.OnDisabledBy += InputService_OnDisabled;
+    }
+
+    void OnDisable()
+    {
+        _inputService.OnDisabledBy -= InputService_OnDisabled;
     }
     #endregion
 }

@@ -14,7 +14,6 @@ public class EventBusEvent : MonoBehaviour, IProgressionEventHandler
     {
         if (enabled && key == Key)
         {
-            Debug.Log("2");
             OnEvent?.Invoke();
         }
     }

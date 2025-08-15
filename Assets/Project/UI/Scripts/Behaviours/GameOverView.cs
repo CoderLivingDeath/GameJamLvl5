@@ -83,7 +83,5 @@ public class GameOverView : MonoBehaviour
             //TODO: реализовать перезагрузку сцены
             Debug.Log("не реализованно");
         });
-
-        
     }
 }

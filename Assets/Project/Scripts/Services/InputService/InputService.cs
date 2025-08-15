@@ -12,6 +12,12 @@ namespace GameJamLvl5.Project.Scripts.Services.InputService
         private readonly InputSystem_Actions _inputActions;
         private readonly InputSubscribersContainer _subscribers;
 
+        public event Action OnEnabled;
+        public event Action OnDisabled;
+
+        public event Action<string> OnEnabledBy;
+        public event Action<string> OnDisabledBy;
+
         private bool _disposed;
 
         /// <summary>
@@ -34,15 +40,11 @@ namespace GameJamLvl5.Project.Scripts.Services.InputService
             _subscribers
                 .Where(pair => pair.Key.StartsWith(filter, StringComparison.OrdinalIgnoreCase))
                 .ToList()
-                .ForEach(pair => pair.Value.Enable());
-        }
-
-        public void Disable(string filter)
-        {
-            _subscribers
-                .Where(pair => pair.Key.StartsWith(filter, StringComparison.OrdinalIgnoreCase))
-                .ToList()
-                .ForEach(pair => pair.Value.Disable());
+                .ForEach(pair =>
+                {
+                    pair.Value.Enable();
+                });
+            OnEnabledBy?.Invoke(filter);
         }
 
         /// <summary>
@@ -53,6 +55,17 @@ namespace GameJamLvl5.Project.Scripts.Services.InputService
             ThrowIfDisposed();
             _inputActions.Enable();
             _subscribers.Enable();
+            OnEnabled?.Invoke();
+        }
+
+        public void Disable(string filter)
+        {
+            _subscribers
+                .Where(pair => pair.Key.StartsWith(filter, StringComparison.OrdinalIgnoreCase))
+                .ToList()
+                .ForEach(pair => pair.Value.Disable());
+
+            OnDisabledBy?.Invoke(filter);
         }
 
         /// <summary>
@@ -63,6 +76,7 @@ namespace GameJamLvl5.Project.Scripts.Services.InputService
             ThrowIfDisposed();
             _inputActions.Disable();
             _subscribers.Disable();
+            OnDisabled?.Invoke();
         }
 
         /// <summary>

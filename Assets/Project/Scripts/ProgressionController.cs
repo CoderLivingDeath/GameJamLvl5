@@ -34,12 +34,23 @@ public class ProgressionController
 
     #region Public API
 
+    public async UniTask HandleFinal(string final)
+    {
+        _inputService.Disable("gameplay");
+        await ShowJournalWithSticker();
+
+    }
+
+    private async UniTask ShowJournalWithSticker()
+    {
+
+    }
+
     /// <summary>
     /// Обрабатывает взаимодействие с предметом.
     /// </summary>
     public async UniTask HandleItemInteraction(string itemId)
     {
-        soundManager.SoundVolume = 0;
         _inputService.Disable("gameplay");
 
         try
