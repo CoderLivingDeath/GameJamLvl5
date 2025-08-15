@@ -12,6 +12,14 @@ using Zenject;
 
 public class JournalPopupView : MonoBehaviour, IUI_EscapeEventHandler
 {
+    #region stickers
+    public GameObject Sticker_doc;
+
+    public GameObject Sticker_cult;
+    
+    public GameObject Sticker_island;
+    #endregion
+
     public ReactiveCollection<string> Entries = new();
 
     public Ease ShowEase = Ease.OutCubic;

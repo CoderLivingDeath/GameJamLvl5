@@ -21,6 +21,9 @@ public class ProgressionController
     [Inject] private PlayerBehaviour _player;
     [Inject] private EventBus _eventBus;
     [Inject] private SoundManager soundManager;
+    [Inject] private GameplayUIViewsProvider gameplayUIViewsProvider;
+
+    [Inject] private FinalBgView finalBgView;
 
     #endregion
 
@@ -36,14 +39,49 @@ public class ProgressionController
 
     public async UniTask HandleFinal(string final)
     {
+        switch (final)
+        {
+            case "cult":
+                finalBgView.image.sprite = finalBgView.Cult;
+                break;
+            case "doc":
+                finalBgView.image.sprite = finalBgView.Doc;
+                break;
+            case "island":
+                finalBgView.image.sprite = finalBgView.Island;
+                break;
+        }
+
         _inputService.Disable("gameplay");
         await ShowJournalWithSticker();
-
+        finalBgView.enabled = true;
     }
 
     private async UniTask ShowJournalWithSticker()
     {
+        var tone = _dataService.GetMaxTon();
+        switch (tone)
+        {
+            case "cult":
+                gameplayUIViewsProvider.JournalPopupView.Sticker_cult.gameObject.SetActive(true);
+                break;
+            case "doctor":
+                gameplayUIViewsProvider.JournalPopupView.Sticker_doc.gameObject.SetActive(true);
+                break;
+            case "island":
+                gameplayUIViewsProvider.JournalPopupView.Sticker_island.gameObject.SetActive(true);
+                break;
+            case "neutral":
+                Debug.LogError("Тон: Нейтральный");
+                break;
+            default:
+                Debug.LogError($"Неизвестный тон: {tone}");
+                break;
+        }
 
+        JournalPopupView.ShowContext context = new(true);
+        var scope = _gameplayUIService.ShowJournalPopup(context);
+        await scope.AwaitShow();
     }
 
     /// <summary>
