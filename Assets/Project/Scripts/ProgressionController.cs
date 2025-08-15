@@ -135,28 +135,38 @@ public class ProgressionController
 
                 screamersView.gameObject.SetActive(true);
 
-                await showScope.AwaitClose();
+                GameObject screamer = null;
+                    
                 switch (itemId)
                 {
                     case "l1_rorsharh":
-                        screamersView.RorshahScreamer.gameObject.SetActive(true);
+                        screamer = screamersView.RorshahScreamer.gameObject;
                         break;
                     case "l1_piplls":
-                        screamersView.PipplesScreamer.gameObject.SetActive(true);
+                        screamer = screamersView.PipplesScreamer.gameObject;
                         break;
                     case "l1_statue":
-                        screamersView.StatuyaScreamer.gameObject.SetActive(true);
+                        screamer = screamersView.StatuyaScreamer.gameObject;
                         break;
                     case "l2_painting":
-                        screamersView.MirrorScreamer.gameObject.SetActive(true);
+                        screamer = screamersView.MirrorScreamer.gameObject;
                         break;
                     case "l2_clock":
-                        screamersView.ClockScreamer.gameObject.SetActive(true);
+                        screamer = screamersView.ClockScreamer.gameObject;
                         break;
                     case "l2_mirror":
-                        screamersView.PaintingScreamer.gameObject.SetActive(true);
+                        screamer = screamersView.PaintingScreamer.gameObject;
+                        
                         break;
                 }
+
+                if (screamer != null)
+                {
+                    screamer.SetActive(true);
+                }
+                
+                await showScope.AwaitClose();
+                screamer.GetComponent<AudioSource>().enabled = true;
 
                 return;
             }
