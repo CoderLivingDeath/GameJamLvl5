@@ -201,8 +201,6 @@ public class ProgressionController
         {
             if (!isGameOver)
                 _inputService.Enable("gameplay");
-
-            _eventBus.RaiseEvent<IProgressionEventHandler>(h => h.HandleProgressionEvent("playerFree"));
         }
     }
 
@@ -286,10 +284,30 @@ public class ProgressionController
         _dataService.AddRootTag(tagEnum);
 
         string tone = _dataService.GetMaxTon();
+        Debug.Log(selectedTag);
+
         if (tone == "neutral")
             tone = selectedTag;
 
-        string newEntry = $"[{tone}]\n{item.meanings.GetTone(tone)}";
+        string text = null;
+        if (selectedTag == "cult")
+        {
+            text = item.meanings.cult.text;
+        }
+        else if (selectedTag == "doctor")
+        {
+            text = item.meanings.doctor.text;
+        }
+        else if (selectedTag == "island")
+        {
+            text = item.meanings.island.text;
+        }
+        else
+        {
+            Debug.LogError("AAAAAA");
+        }
+
+        string newEntry = $"[{text}]\n{item.meanings.GetTone(selectedTag)}";
         Debug.Log(newEntry);
         _gameplayUIService.AddEntryInJournalPopup(newEntry);
     }

@@ -17,7 +17,7 @@ public class JournalPopupView : MonoBehaviour
     public GameObject Sticker_doc;
 
     public GameObject Sticker_cult;
-    
+
     public GameObject Sticker_island;
     #endregion
 
@@ -128,6 +128,10 @@ public class JournalPopupView : MonoBehaviour
                 Debug.Log($"Заменён элемент: старый={replaceEvent.OldValue}, новый={replaceEvent.NewValue}");
             })
             .AddTo(_disposables);
+
+
+        ShowContext context = new(false);
+        ShowAsyncWithDelay(context).Forget();
     }
 
     private async UniTask ShowAsync(ShowContext context)
@@ -178,6 +182,19 @@ public class JournalPopupView : MonoBehaviour
     {
         _showTcs = new UniTaskCompletionSource();
         return _showTcs.Task;
+    }
+
+    private async UniTask ShowAsyncWithDelay(ShowContext context)
+    {
+        await UniTask.WaitForSeconds(2f);
+        if (_isAnimating) return;
+        _isAnimating = true;
+
+        JournalPopupViewShowAnimation animation = new(ShowDuration, ShowEase, context.DarkBackground);
+        gameObject.SetActive(true);
+        await animation.RunAsync(this);
+        _showTcs?.TrySetResult();
+        _isAnimating = false;
     }
 
     private void AddText(string text)

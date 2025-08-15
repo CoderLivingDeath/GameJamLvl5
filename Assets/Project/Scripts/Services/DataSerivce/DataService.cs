@@ -103,14 +103,27 @@ public class Meanings
 
     public string GetTone(string tone)
     {
-        return tone switch
+        switch (tone)
         {
-            "cult" => cult.tone_cult,
-            "doctor" => doctor.tone_doctor,
-            "island" => island.tone_island,
-            "fail" => throw new ArgumentException($"Unavalibe tone: {tone}"),
-            _ => throw new ArgumentException($"Unknown tone: {tone}")
-        };
+            case "cult":
+                Debug.Log("GET TONE" + cult.tone_cult);
+                return cult.tone_cult;
+                break;
+            case "doctor":
+                Debug.Log("GET TONE" + cult.tone_doctor);
+                return cult.tone_doctor;
+                break;
+            case "island":
+                Debug.Log("GET TONE" + cult.tone_island);
+                return cult.tone_island;
+                break;
+            case "fail":
+                throw new ArgumentException($"Unavalibe tone: {tone}");
+                break;
+            default:
+                throw new ArgumentException($"Unavalibe tone: {tone}");
+
+        }
     }
 }
 
