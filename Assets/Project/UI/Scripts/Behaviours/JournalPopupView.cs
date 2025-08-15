@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using GameJamLvl5.Project.Infrastructure.EventBus;
 using TMPro;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-public class JournalPopupView : MonoBehaviour
+public class JournalPopupView : MonoBehaviour, IUI_EscapeEventHandler
 {
     public ReactiveCollection<string> Entries = new();
 
@@ -43,7 +44,6 @@ public class JournalPopupView : MonoBehaviour
     private UniTaskCompletionSource _showTcs;
 
     private CompositeDisposable _disposables = new CompositeDisposable();
-
 
     #region Commands
 
@@ -95,6 +95,9 @@ public class JournalPopupView : MonoBehaviour
     #endregion
 
     [Inject]
+    private EventBus _eventBus;
+
+    [Inject]
     private void Construct()
     {
         CommandsSetup();
@@ -116,6 +119,8 @@ public class JournalPopupView : MonoBehaviour
                 Debug.Log($"Заменён элемент: старый={replaceEvent.OldValue}, новый={replaceEvent.NewValue}");
             })
             .AddTo(_disposables);
+
+        _eventBus.Subscribe(this);
     }
 
     private async UniTask ShowAsync(ShowContext context)
@@ -194,5 +199,10 @@ public class JournalPopupView : MonoBehaviour
         }
 
         _disposables.Dispose();
+    }
+
+    public void HandleEscape(bool button)
+    {
+        CloseCommand.ExecuteAsync(null).Forget();
     }
 }

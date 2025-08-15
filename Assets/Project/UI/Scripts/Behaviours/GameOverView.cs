@@ -45,6 +45,8 @@ public class GameOverView : MonoBehaviour
     }
     #endregion
 
+    [Inject] private SceneManagerService _sceneManagerService;
+
     private async UniTask ShowAsync()
     {
         _container.alpha = 0;
@@ -75,10 +77,13 @@ public class GameOverView : MonoBehaviour
 
         _restartButton.onClick.AddListener(async () =>
         {
+            _sceneManagerService.RestartGameplayLevelAsync().Forget();
             await CloseCommand.ExecuteAsync(null);
 
             //TODO: реализовать перезагрузку сцены
             Debug.Log("не реализованно");
         });
+
+        
     }
 }

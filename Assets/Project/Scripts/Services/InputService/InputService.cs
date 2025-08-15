@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 
 namespace GameJamLvl5.Project.Scripts.Services.InputService
 {
@@ -26,6 +27,22 @@ namespace GameJamLvl5.Project.Scripts.Services.InputService
             _inputActions = inputActions ?? throw new ArgumentNullException(nameof(inputActions));
 
             Enable();
+        }
+
+        public void Enable(string filter)
+        {
+            _subscribers
+                .Where(pair => pair.Key.StartsWith(filter, StringComparison.OrdinalIgnoreCase))
+                .ToList()
+                .ForEach(pair => pair.Value.Enable());
+        }
+
+        public void Disable(string filter)
+        {
+            _subscribers
+                .Where(pair => pair.Key.StartsWith(filter, StringComparison.OrdinalIgnoreCase))
+                .ToList()
+                .ForEach(pair => pair.Value.Disable());
         }
 
         /// <summary>

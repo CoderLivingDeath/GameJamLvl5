@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 using Zenject;
 using GameJamLvl5.Project.Infrastructure.EventBus.Subscribers;
 using GameJamLvl5.Project.Scripts.Services.InputService;
+using GameJamLvl5.Project.Infrastructure.EventBus;
 
 namespace GameJamLvl5.Project.Infrastructure.Factory
 {
@@ -27,6 +28,8 @@ namespace GameJamLvl5.Project.Infrastructure.Factory
         public const string INPUT_KEY_UI_MOUSE_LEFTCLICK = "ui/mouse/left_click";
 
         public const string INPUT_KEY_UI_MOUSE_RIGHTCLICK = "ui/mouse/right_click";
+
+        public const string INPUT_KEY_UI_ESCPAPE = "ui/escape";
 
         private DiContainer _container;
 
@@ -85,6 +88,7 @@ namespace GameJamLvl5.Project.Infrastructure.Factory
             container.SubscribePerformed(INPUT_KEY_UI_MOUSE_POSITION, actions.UI.MousePosition, UI_Mouse_Position_Handler);
             container.SubscribePerformed(INPUT_KEY_UI_MOUSE_LEFTCLICK, actions.UI.MouseLeftClick, UI_Mouse_LeftClick_Handler);
             container.SubscribePerformed(INPUT_KEY_UI_MOUSE_RIGHTCLICK, actions.UI.MouseRightClick, UI_Mouse_RightClick_Handler);
+            container.SubscribePerformed(INPUT_KEY_UI_ESCPAPE, actions.UI.Escape, UI_ESCAPE);
 
             void UI_Up_Handler(InputAction.CallbackContext context)
             {
@@ -126,6 +130,12 @@ namespace GameJamLvl5.Project.Infrastructure.Factory
             {
                 var value = context.ReadValueAsButton();
                 eventBus.RaiseEvent<IUI_MouseRightClickEventHandler>(h => h.HandleMouseRightClick(value));
+            }
+
+            void UI_ESCAPE(InputAction.CallbackContext context)
+            {
+                var value = context.ReadValueAsButton();
+                eventBus.RaiseEvent<IUI_EscapeEventHandler>(h => h.HandleEscape(value));
             }
             #endregion
             return container;

@@ -14,7 +14,7 @@ namespace GameJamLvl5.Project.Scripts.Services.InputService
         public bool IsActive => _isActive;
         private bool _isActive = false;
 
-        public Dictionary<string, InputSubscriber> Subscribers => _subscribers;
+        public Dictionary<string, InputSubscriber> Entries => _subscribers;
         private readonly Dictionary<string, InputSubscriber> _subscribers = new();
 
         private bool _disposed;

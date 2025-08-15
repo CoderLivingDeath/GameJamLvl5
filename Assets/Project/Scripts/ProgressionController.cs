@@ -40,7 +40,7 @@ public class ProgressionController
     public async UniTask HandleItemInteraction(string itemId)
     {
         soundManager.SoundVolume = 0;
-        _inputService.Disable();
+        _inputService.Disable("gameplay");
 
         try
         {
@@ -100,7 +100,7 @@ public class ProgressionController
         finally
         {
             if (!isGameOver)
-                _inputService.Enable();
+                _inputService.Enable("gameplay");
 
             _eventBus.RaiseEvent<IProgressionEventHandler>(h => h.HandleProgressionEvent("playerFree"));
         }

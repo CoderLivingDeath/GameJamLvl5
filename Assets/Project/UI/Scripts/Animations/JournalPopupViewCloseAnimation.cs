@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using GameJamLvl5.Project.Infrastructure.EventBus;
 using UnityEngine;
 
 public class JournalPopupViewCloseAnimation : UIAnimation<JournalPopupView>
