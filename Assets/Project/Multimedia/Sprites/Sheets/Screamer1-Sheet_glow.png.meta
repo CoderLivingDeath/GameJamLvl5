@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 37a0cb7e48959724a8aab86a8ba51ef8
+guid: fde5a1cc417a8fd4d94c71141598e451
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -249,714 +249,683 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet
-        (3)_0"
+      name: Screamer1-Sheet_glow_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 128
         height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: fd1b2eb24f89a2410800000000000000
-      internalID: 1453142004256125407
+      spriteID: 6cd808f61069b7940a368ed0835467f0
+      internalID: -408578241
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet
-        (3)_1"
+      name: Screamer1-Sheet_glow_1
       rect:
         serializedVersion: 2
         x: 128
         y: 0
         width: 128
         height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: e9231d273c5eddb80800000000000000
-      internalID: -8368279904976817506
+      spriteID: 6c34ce51eaf40be42a737f5e4c7fe1d0
+      internalID: -44410786
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet
-        (3)_2"
+      name: Screamer1-Sheet_glow_2
       rect:
         serializedVersion: 2
         x: 256
         y: 0
         width: 128
         height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c39f2a558ed09a590800000000000000
-      internalID: -7662577999473870532
+      spriteID: 775934fa1974de5498dd06e329c91fb4
+      internalID: 1413670413
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet
-        (3)_3"
+      name: Screamer1-Sheet_glow_3
       rect:
         serializedVersion: 2
         x: 384
         y: 0
         width: 128
         height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 000ea7f59dacb2c90800000000000000
-      internalID: -7193432944835633152
+      spriteID: 9672bf72fe87b9e4faebd0cdd1228495
+      internalID: -1959516636
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet
-        (3)_4"
+      name: Screamer1-Sheet_glow_4
       rect:
         serializedVersion: 2
         x: 512
         y: 0
         width: 128
         height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d7172595299b47590800000000000000
-      internalID: -7677307426544914051
+      spriteID: d9694c42f599fa942b4d63a43b9fdf8d
+      internalID: -873827041
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet
-        (3)_5"
+      name: Screamer1-Sheet_glow_5
       rect:
         serializedVersion: 2
         x: 640
         y: 0
         width: 128
         height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: b4920a5c93e34da00800000000000000
-      internalID: 780317053291604299
+      spriteID: 3b2e9ee6a438f154991580ef8a2ae222
+      internalID: -175089144
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet
-        (3)_6"
+      name: Screamer1-Sheet_glow_6
       rect:
         serializedVersion: 2
         x: 768
         y: 0
         width: 128
         height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 719b065306f3d8900800000000000000
-      internalID: 688276000502495511
+      spriteID: 9e89deb755b818442bfd4ea58febaf02
+      internalID: -1883614222
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet
-        (3)_7"
+      name: Screamer1-Sheet_glow_7
       rect:
         serializedVersion: 2
         x: 896
         y: 0
         width: 128
         height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 564c5dbb055cb4400800000000000000
-      internalID: 309557949944415333
+      spriteID: 4ac4d7c030d587e4c84c145fdb2ffac1
+      internalID: -606277114
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet
-        (3)_8"
+      name: Screamer1-Sheet_glow_8
       rect:
         serializedVersion: 2
         x: 1024
         y: 0
         width: 128
         height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d4ea0fa460de51490800000000000000
-      internalID: -7776048570302419379
+      spriteID: 511841eade7ed0a4aa6c55a386fd5b1d
+      internalID: 913213382
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet
-        (3)_9"
+      name: Screamer1-Sheet_glow_9
       rect:
         serializedVersion: 2
         x: 1152
         y: 0
         width: 128
         height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f92246faf2eff7910800000000000000
-      internalID: 1837466653749944991
+      spriteID: c10b743e782e629448c04f93d4d238f6
+      internalID: -1607284702
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet
-        (3)_10"
+      name: Screamer1-Sheet_glow_10
       rect:
         serializedVersion: 2
         x: 1280
         y: 0
         width: 128
         height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 399de4a64a632ea70800000000000000
-      internalID: 8854699897149905299
+      spriteID: 6400e5d1a4a217c449dbab351f8b43fd
+      internalID: -1313985519
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet
-        (3)_11"
+      name: Screamer1-Sheet_glow_11
       rect:
         serializedVersion: 2
         x: 1408
         y: 0
         width: 128
         height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 6f77f9291bcd8f700800000000000000
-      internalID: 574451607716984822
+      spriteID: fe091a56924723b46be3c6d1f9bca673
+      internalID: -1080626501
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet
-        (3)_12"
+      name: Screamer1-Sheet_glow_12
       rect:
         serializedVersion: 2
         x: 1536
         y: 0
         width: 128
         height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 55c5dbb46650b4710800000000000000
-      internalID: 1678441223041145941
+      spriteID: 46000f46fc447164c9e89096d54b44f5
+      internalID: 865286394
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet
-        (3)_13"
+      name: Screamer1-Sheet_glow_13
       rect:
         serializedVersion: 2
         x: 1664
         y: 0
         width: 128
         height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 401d1d0d18ff051d0800000000000000
-      internalID: -3363907988626484988
+      spriteID: 839372c1fa5b76f49a264fd56dd25900
+      internalID: -2111963796
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet
-        (3)_14"
+      name: Screamer1-Sheet_glow_14
       rect:
         serializedVersion: 2
         x: 1792
         y: 0
         width: 128
         height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: bf606bcfb9e4dd450800000000000000
-      internalID: 6115130300905686779
+      spriteID: 26b2a335ba062cd48a4b6eb0c126b340
+      internalID: -1656666323
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet
-        (3)_15"
+      name: Screamer1-Sheet_glow_15
       rect:
         serializedVersion: 2
         x: 1920
         y: 0
         width: 128
         height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f32a9e8a9c01347d0800000000000000
-      internalID: -2935484073807076801
+      spriteID: 0b562c14bfd65ec4bb9aeaac26149e7e
+      internalID: 1839913542
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet
-        (3)_16"
+      name: Screamer1-Sheet_glow_16
       rect:
         serializedVersion: 2
         x: 2048
         y: 0
         width: 128
         height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 2a59e5dccd2ab7110800000000000000
-      internalID: 1259779590002218402
+      spriteID: ee27e4ec7974dfd44bf3ec907f6fef6b
+      internalID: -284083438
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet
-        (3)_17"
+      name: Screamer1-Sheet_glow_17
       rect:
         serializedVersion: 2
         x: 2176
         y: 0
         width: 128
         height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 7cbcf12f3da920830800000000000000
-      internalID: 4035958451168332743
+      spriteID: 9bd370559f7c05f47bedf09fa76fe8ac
+      internalID: 1804067557
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet
-        (3)_18"
+      name: Screamer1-Sheet_glow_18
       rect:
         serializedVersion: 2
         x: 2304
         y: 0
         width: 128
         height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: e913fe62a96018c10800000000000000
-      internalID: 2053930164205597086
+      spriteID: 9aef773d574a3ba4797a280f661c3c83
+      internalID: -2023827731
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet
-        (3)_19"
+      name: Screamer1-Sheet_glow_19
       rect:
         serializedVersion: 2
         x: 2432
         y: 0
         width: 128
         height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 42a9c4e720437ac30800000000000000
-      internalID: 4370519148699884068
+      spriteID: c07bde2ecd71a014eb51bac91927de85
+      internalID: 1636502391
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet
-        (3)_20"
+      name: Screamer1-Sheet_glow_20
       rect:
         serializedVersion: 2
         x: 2560
         y: 0
         width: 128
         height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 5dd171d66643b0260800000000000000
-      internalID: 7064798054982294997
+      spriteID: 519b8825a04ff414e8f7a53654c22061
+      internalID: 330875480
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet
-        (3)_21"
+      name: Screamer1-Sheet_glow_21
       rect:
         serializedVersion: 2
         x: 2688
         y: 0
         width: 128
         height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 1dc1ea1895f619a00800000000000000
-      internalID: 761512242220768465
+      spriteID: 770568e201a3e6640b332b83e5716bff
+      internalID: 1229156605
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet
-        (3)_22"
+      name: Screamer1-Sheet_glow_22
       rect:
         serializedVersion: 2
         x: 2816
         y: 0
         width: 128
         height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: b9e1acb1ac44af0f0800000000000000
-      internalID: -1082477125588869477
+      spriteID: 14f6241b937182645be6e8f4ea090b40
+      internalID: 65472691
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet
-        (3)_23"
+      name: Screamer1-Sheet_glow_23
       rect:
         serializedVersion: 2
         x: 2944
         y: 0
         width: 128
         height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5822042a74337c449818a50dc1d4c72c
-      internalID: -1146100601
+      spriteID: 4394de29fbe42d9479f3a120098029bf
+      internalID: -918617544
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet
-        (3)_24"
+      name: Screamer1-Sheet_glow_24
       rect:
         serializedVersion: 2
         x: 3072
         y: 0
         width: 128
         height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 243f7596547f37b4ca617b87e2a64647
-      internalID: 121067037
+      spriteID: 9f8ff41b83706cc4cb574f02dd47801a
+      internalID: -1454108708
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet
-        (3)_25"
+      name: Screamer1-Sheet_glow_25
       rect:
         serializedVersion: 2
         x: 3200
         y: 0
         width: 128
         height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6613cf6490d16d342abee0d0e41f5e11
-      internalID: 2044972235
+      spriteID: bafb30b579aa1d643820c5bdecff93d8
+      internalID: 813418321
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet
-        (3)_26"
+      name: Screamer1-Sheet_glow_26
       rect:
         serializedVersion: 2
         x: 3328
         y: 0
         width: 128
         height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d19abfe94fe2619498227361e374980f
-      internalID: 1995230750
+      spriteID: 25979cc57a4476b418a8129f2bcd7441
+      internalID: 989033146
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet
-        (3)_27"
+      name: Screamer1-Sheet_glow_27
       rect:
         serializedVersion: 2
         x: 3456
         y: 0
         width: 128
         height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1bf4d15f87ad13c438ff6994f0a1ba43
-      internalID: -1466577579
+      spriteID: 4f9434e6cbcee7941b881db35e2c0260
+      internalID: 1500924112
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet
-        (3)_28"
+      name: Screamer1-Sheet_glow_28
       rect:
         serializedVersion: 2
         x: 3584
         y: 0
         width: 128
         height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df2cc0e3112f64943be4bf348b31cbed
-      internalID: -1647708825
+      spriteID: 19de7a204920d1b47b79d511117f3da0
+      internalID: -1032379509
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet
-        (3)_29"
+      name: Screamer1-Sheet_glow_29
       rect:
         serializedVersion: 2
         x: 3712
         y: 0
         width: 128
         height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eed348437363e7a4788b3c1e54e3585e
-      internalID: 2124111079
+      spriteID: c3d7d4b9207f0ce4297086cfad8d4e2e
+      internalID: -1895694322
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet
-        (3)_30"
+      name: Screamer1-Sheet_glow_30
       rect:
         serializedVersion: 2
         x: 3840
         y: 0
         width: 128
         height: 128
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d0d2093b4c83d44b8cdefed83fa5f3a
-      internalID: -2063070230
+      spriteID: cbaf85f12c554a64a8c14a06623b3304
+      internalID: 1862788970
       vertices: []
       indices: 
       edges: []
@@ -975,39 +944,41 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":128.0,"y":128.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"slicingType":1,"keepEmptyRects":true,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":128.0,"y":128.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":1,"keepEmptyRects":true,"isAlternate":false}'
+      - key: SpriteEditor.SliceOnImport
+        value: False
     nameFileIdTable:
-      "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet (3)_0": 1453142004256125407
-      "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet (3)_1": -8368279904976817506
-      "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet (3)_10": 8854699897149905299
-      "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet (3)_11": 574451607716984822
-      "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet (3)_12": 1678441223041145941
-      "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet (3)_13": -3363907988626484988
-      "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet (3)_14": 6115130300905686779
-      "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet (3)_15": -2935484073807076801
-      "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet (3)_16": 1259779590002218402
-      "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet (3)_17": 4035958451168332743
-      "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet (3)_18": 2053930164205597086
-      "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet (3)_19": 4370519148699884068
-      "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet (3)_2": -7662577999473870532
-      "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet (3)_20": 7064798054982294997
-      "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet (3)_21": 761512242220768465
-      "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet (3)_22": -1082477125588869477
-      "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet (3)_23": -1146100601
-      "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet (3)_24": 121067037
-      "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet (3)_25": 2044972235
-      "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet (3)_26": 1995230750
-      "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet (3)_27": -1466577579
-      "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet (3)_28": -1647708825
-      "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet (3)_29": 2124111079
-      "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet (3)_3": -7193432944835633152
-      "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet (3)_30": -2063070230
-      "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet (3)_4": -7677307426544914051
-      "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet (3)_5": 780317053291604299
-      "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet (3)_6": 688276000502495511
-      "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet (3)_7": 309557949944415333
-      "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet (3)_8": -7776048570302419379
-      "\u043F\u043E\u0434\u0433\u043B\u044F\u0434\u044B\u0432\u0430\u0435\u0442_\u0441_\u0431\u0435\u043B\u044B\u043C\u0438_\u0433\u043B\u0430\u0437\u0430\u043C\u0438_Sheet (3)_9": 1837466653749944991
+      Screamer1-Sheet_glow_0: -408578241
+      Screamer1-Sheet_glow_1: -44410786
+      Screamer1-Sheet_glow_10: -1313985519
+      Screamer1-Sheet_glow_11: -1080626501
+      Screamer1-Sheet_glow_12: 865286394
+      Screamer1-Sheet_glow_13: -2111963796
+      Screamer1-Sheet_glow_14: -1656666323
+      Screamer1-Sheet_glow_15: 1839913542
+      Screamer1-Sheet_glow_16: -284083438
+      Screamer1-Sheet_glow_17: 1804067557
+      Screamer1-Sheet_glow_18: -2023827731
+      Screamer1-Sheet_glow_19: 1636502391
+      Screamer1-Sheet_glow_2: 1413670413
+      Screamer1-Sheet_glow_20: 330875480
+      Screamer1-Sheet_glow_21: 1229156605
+      Screamer1-Sheet_glow_22: 65472691
+      Screamer1-Sheet_glow_23: -918617544
+      Screamer1-Sheet_glow_24: -1454108708
+      Screamer1-Sheet_glow_25: 813418321
+      Screamer1-Sheet_glow_26: 989033146
+      Screamer1-Sheet_glow_27: 1500924112
+      Screamer1-Sheet_glow_28: -1032379509
+      Screamer1-Sheet_glow_29: -1895694322
+      Screamer1-Sheet_glow_3: -1959516636
+      Screamer1-Sheet_glow_30: 1862788970
+      Screamer1-Sheet_glow_4: -873827041
+      Screamer1-Sheet_glow_5: -175089144
+      Screamer1-Sheet_glow_6: -1883614222
+      Screamer1-Sheet_glow_7: -606277114
+      Screamer1-Sheet_glow_8: 913213382
+      Screamer1-Sheet_glow_9: -1607284702
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

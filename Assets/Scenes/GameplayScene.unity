@@ -4884,7 +4884,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.025275975, y: 3.5150797, z: 0}
+  m_LocalPosition: {x: -0.029953659, y: 3.5149798, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8350,7 +8350,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 342.435, y: -126.9}
+  m_AnchoredPosition: {x: 342.435, y: -126.89996}
   m_SizeDelta: {x: 684.87, y: 253.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1049249600
@@ -9658,7 +9658,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 4.3
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -10206,7 +10206,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 342.435, y: -246.01498}
+  m_AnchoredPosition: {x: 342.435, y: -246.01501}
   m_SizeDelta: {x: 684.87, y: 144.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1268934280
@@ -10426,7 +10426,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -676.8794, y: -323.03}
+  m_AnchoredPosition: {x: -676.8794, y: -323.02997}
   m_SizeDelta: {x: -1353.76, y: -646.06}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1290286245
@@ -12649,7 +12649,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 342.435, y: -72.005}
+  m_AnchoredPosition: {x: 342.435, y: -72.005005}
   m_SizeDelta: {x: 684.87, y: 144.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1492367332
@@ -13805,7 +13805,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 4.186018
+  MinDistance: 14
   MaxDistance: 500
   Pan2D: 0.5
   rolloffMode: 0
@@ -15423,7 +15423,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 91e04405fa567d549baa4e9fb6011239, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.607
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -15431,7 +15431,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 23.426748
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -15467,7 +15467,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -17584,6 +17584,10 @@ PrefabInstance:
       propertyPath: m_Resource
       value: 
       objectReference: {fileID: 6418180475301049370, guid: 91c59b80a508ba0468f2296c292147cc, type: 2}
+    - target: {fileID: 5493177561605175178, guid: 0ea0dbfd318131a4bb1e4af035a86434, type: 3}
+      propertyPath: MinDistance
+      value: 3.33
+      objectReference: {fileID: 0}
     - target: {fileID: 5493177561605175178, guid: 0ea0dbfd318131a4bb1e4af035a86434, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
