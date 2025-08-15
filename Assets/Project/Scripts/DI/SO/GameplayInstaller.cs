@@ -23,6 +23,7 @@ public class GameplayInstaller : ScriptableObjectInstaller<GameplayInstaller>
         Container.BindInterfacesAndSelfTo<GameOverView>().FromComponentInHierarchy().AsSingle().NonLazy();
         Container.BindInterfacesAndSelfTo<DebugView>().FromComponentInHierarchy().AsSingle().NonLazy();
         Container.BindInterfacesAndSelfTo<FinalBgView>().FromComponentInHierarchy().AsSingle().NonLazy();
+        Container.BindInterfacesAndSelfTo<ScreamersView>().FromComponentInHierarchy().AsSingle().NonLazy();
 
         // providers
         Container.BindInterfacesAndSelfTo<AssetsSO>().FromInstance(_assetsSO).AsSingle().NonLazy();

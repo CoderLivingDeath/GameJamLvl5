@@ -22,6 +22,7 @@ public class ProgressionController
     [Inject] private EventBus _eventBus;
     [Inject] private SoundManager soundManager;
     [Inject] private GameplayUIViewsProvider gameplayUIViewsProvider;
+    [Inject] private ScreamersView screamersView;
 
     [Inject] private FinalBgView finalBgView;
 
@@ -127,7 +128,36 @@ public class ProgressionController
 
                 // TODO: скример
                 isGameOver = true;
-                _gameplayUIService.ShowGameOverView().Forget();
+                JournalPopupView.ShowContext context = new(true);
+                var showScope = _gameplayUIService.ShowJournalPopup(context);
+
+                await showScope.AwaitShow();
+
+                screamersView.gameObject.SetActive(true);
+
+                await showScope.AwaitClose();
+                switch (itemId)
+                {
+                    case "l1_rorsharh":
+                        screamersView.RorshahScreamer.gameObject.SetActive(true);
+                        break;
+                    case "l1_piplls":
+                        screamersView.PipplesScreamer.gameObject.SetActive(true);
+                        break;
+                    case "l1_statue":
+                        screamersView.StatuyaScreamer.gameObject.SetActive(true);
+                        break;
+                    case "l2_painting":
+                        screamersView.MirrorScreamer.gameObject.SetActive(true);
+                        break;
+                    case "l2_clock":
+                        screamersView.ClockScreamer.gameObject.SetActive(true);
+                        break;
+                    case "l2_mirror":
+                        screamersView.PaintingScreamer.gameObject.SetActive(true);
+                        break;
+                }
+
                 return;
             }
 
