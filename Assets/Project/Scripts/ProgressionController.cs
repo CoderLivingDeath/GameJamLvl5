@@ -71,6 +71,7 @@ public class ProgressionController
 
             if (selectedTag == "fail")
             {
+                _eventBus.RaiseEvent<IProgressionEventHandler>(h => h.HandleProgressionEvent("event_fail"));
                 _eventBus.RaiseEvent<IProgressionEventHandler>(h => h.HandleProgressionEvent(itemId + "_event_fail"));
                 _gameplayUIService.ClosePrecepririonSelectionView();
 
