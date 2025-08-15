@@ -43,12 +43,18 @@ public class ProgressionController
         switch (final)
         {
             case "cult":
+                _gameplaySceneAssets.MusicSource.resource = _gameplaySceneAssets.Ktulhu;
+                _gameplaySceneAssets.MusicSource.Play();
                 finalBgView.image.sprite = finalBgView.Cult;
                 break;
             case "doc":
+                _gameplaySceneAssets.MusicSource.resource = _gameplaySceneAssets.doctor;
+                _gameplaySceneAssets.MusicSource.Play();
                 finalBgView.image.sprite = finalBgView.Doc;
                 break;
             case "island":
+                _gameplaySceneAssets.MusicSource.resource = _gameplaySceneAssets.island;
+                _gameplaySceneAssets.MusicSource.Play();
                 finalBgView.image.sprite = finalBgView.Island;
                 break;
         }
