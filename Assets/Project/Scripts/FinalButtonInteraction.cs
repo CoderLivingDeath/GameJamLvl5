@@ -2,7 +2,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
-public class FinalItemInteraction : MonoBehaviour
+public class FinalButtonInteraction : MonoBehaviour
 {
     [Inject] private ProgressionController progressionController;
     public string FinalKey;

@@ -54,7 +54,7 @@ public class ProgressionController
 
         _inputService.Disable("gameplay");
         await ShowJournalWithSticker();
-        finalBgView.enabled = true;
+        finalBgView.gameObject.SetActive(true);
     }
 
     private async UniTask ShowJournalWithSticker()
