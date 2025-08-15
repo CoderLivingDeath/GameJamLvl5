@@ -90,6 +90,7 @@ public class ProgressionController
     public async UniTask HandleItemInteraction(string itemId)
     {
         _inputService.Disable("gameplay");
+        _gameplaySceneAssets.MusicSource.Pause();
 
         try
         {
@@ -153,6 +154,7 @@ public class ProgressionController
 
             _eventBus.RaiseEvent<IProgressionEventHandler>(h => h.HandleProgressionEvent("playerFree"));
         }
+        _gameplaySceneAssets.MusicSource.Play();
     }
 
     /// <summary>

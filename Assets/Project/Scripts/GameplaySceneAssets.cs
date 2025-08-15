@@ -12,4 +12,6 @@ public class GameplaySceneAssets : MonoBehaviour
     public PolygonCollider2D[] L3CameraBounds;
 
     public AudioMixer AudioMixer;
+
+    public AudioSource MusicSource;
 }
