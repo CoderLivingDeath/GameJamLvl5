@@ -2007,7 +2007,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &169421506
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7082,7 +7082,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.025201648, y: 3.5149798, z: 0}
+  m_LocalPosition: {x: -0.026435047, y: 3.5149798, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12066,7 +12066,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 951207221}
-  Doc: {fileID: -4084603194186538911, guid: a2e5fb8f4ee74794d9ade851050c9971, type: 3}
+  Doc: {fileID: 8957572931539698883, guid: 57b6a6ad676a6e94ebcedd8f792b37a6, type: 3}
   Island: {fileID: 21300000, guid: b0085eb2115c0604097cf981ba481b0d, type: 3}
   Cult: {fileID: -124999067186815009, guid: 32ba6c8878b0e674ba6dcbb966c8f1f1, type: 3}
 --- !u!1 &966628946
@@ -12470,7 +12470,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1005034074
 Transform:
   m_ObjectHideFlags: 0
@@ -12498,7 +12498,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: f1fd0490445ed024cad23750d781757e, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -14084,7 +14084,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1147754231
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15999,7 +15999,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -676.8793, y: -323.0299}
+  m_AnchoredPosition: {x: -676.87933, y: -323.0299}
   m_SizeDelta: {x: -1353.76, y: -646.06}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1290286245
@@ -17018,6 +17018,9 @@ MonoBehaviour:
   - {fileID: 358360442}
   AudioMixer: {fileID: 24100000, guid: f1b5f7e1f9166d34fb200a6cae775efc, type: 2}
   MusicSource: {fileID: 1005034075}
+  Ktulhu: {fileID: 8300000, guid: f1fd0490445ed024cad23750d781757e, type: 3}
+  doctor: {fileID: 8300000, guid: 1ac5f5a8fced3b84aa332acd56688317, type: 3}
+  island: {fileID: 8300000, guid: f4356f65711487541a1ab515c5178d9d, type: 3}
 --- !u!4 &1348783383
 Transform:
   m_ObjectHideFlags: 0
@@ -18683,7 +18686,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -426.9994, y: 34.29004}
+  m_AnchoredPosition: {x: -426.99945, y: 34.29004}
   m_SizeDelta: {x: -1235.13, y: -211.54}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1444356548

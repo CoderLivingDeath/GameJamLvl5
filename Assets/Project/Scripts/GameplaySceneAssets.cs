@@ -14,4 +14,8 @@ public class GameplaySceneAssets : MonoBehaviour
     public AudioMixer AudioMixer;
 
     public AudioSource MusicSource;
+
+    public AudioResource Ktulhu;
+    public AudioResource doctor;
+    public AudioResource island;
 }
