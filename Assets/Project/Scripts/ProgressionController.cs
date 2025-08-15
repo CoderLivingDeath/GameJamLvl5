@@ -23,6 +23,7 @@ public class ProgressionController
     [Inject] private SoundManager soundManager;
     [Inject] private GameplayUIViewsProvider gameplayUIViewsProvider;
     [Inject] private ScreamersView screamersView;
+    [Inject] private SceneManagerService sceneManagerService;
 
     [Inject] private FinalBgView finalBgView;
 
@@ -96,8 +97,6 @@ public class ProgressionController
     /// </summary>
     public async UniTask HandleItemInteraction(string itemId)
     {
-        _inputService.Disable("gameplay");
-        _gameplaySceneAssets.MusicSource.Pause();
 
         try
         {
@@ -132,11 +131,12 @@ public class ProgressionController
                 _eventBus.RaiseEvent<IProgressionEventHandler>(h => h.HandleProgressionEvent(itemId + "_event_fail"));
                 _gameplayUIService.ClosePrecepririonSelectionView();
 
-                // TODO: скример
                 isGameOver = true;
                 JournalPopupView.ShowContext context = new(true);
                 var showScope = _gameplayUIService.ShowJournalPopup(context);
+                _gameplaySceneAssets.JournalSource.Play();
 
+                gameplayUIViewsProvider.JournalPopupView.BloackCloseFor(_gameplaySceneAssets.JournalSource.clip.length).Forget();
                 await showScope.AwaitShow();
 
                 screamersView.gameObject.SetActive(true);
@@ -173,6 +173,9 @@ public class ProgressionController
                 
                 await showScope.AwaitClose();
                 screamer.GetComponent<AudioSource>().enabled = true;
+                await UniTask.WaitForSeconds(screamer.GetComponent<AudioSource>().clip.length);
+                sceneManagerService.RestartGameplayLevelAsync().Forget();
+                _inputService.Enable();
 
                 return;
             }
@@ -192,6 +195,7 @@ public class ProgressionController
             {
                 await ShowJournalPopup(itemId);
             }
+
         }
         finally
         {
@@ -200,7 +204,6 @@ public class ProgressionController
 
             _eventBus.RaiseEvent<IProgressionEventHandler>(h => h.HandleProgressionEvent("playerFree"));
         }
-        _gameplaySceneAssets.MusicSource.Play();
     }
 
     /// <summary>

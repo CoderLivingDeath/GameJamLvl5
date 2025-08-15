@@ -12,6 +12,6 @@ public class SceneManagerService
 
     public async UniTask RestartGameplayLevelAsync()
     {
-        await _zenjectSceneLoader.LoadSceneAsync(0).ToUniTask();
+        await _zenjectSceneLoader.LoadSceneAsync(0,UnityEngine.SceneManagement.LoadSceneMode.Single).ToUniTask();
     }
 }

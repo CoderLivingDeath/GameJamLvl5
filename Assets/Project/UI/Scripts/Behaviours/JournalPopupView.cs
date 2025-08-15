@@ -10,9 +10,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-public class JournalPopupView : MonoBehaviour, IUI_EscapeEventHandler
+public class JournalPopupView : MonoBehaviour
 {
     #region stickers
+
     public GameObject Sticker_doc;
 
     public GameObject Sticker_cult;
@@ -127,8 +128,6 @@ public class JournalPopupView : MonoBehaviour, IUI_EscapeEventHandler
                 Debug.Log($"Заменён элемент: старый={replaceEvent.OldValue}, новый={replaceEvent.NewValue}");
             })
             .AddTo(_disposables);
-
-        _eventBus.Subscribe(this);
     }
 
     private async UniTask ShowAsync(ShowContext context)
@@ -156,6 +155,13 @@ public class JournalPopupView : MonoBehaviour, IUI_EscapeEventHandler
         _closeTcs = null;
 
         _isAnimating = false;
+    }
+
+    public async UniTask BloackCloseFor(float time)
+    {
+        _closeButton.enabled = false;
+        await UniTask.WaitForSeconds(time);
+        _closeButton.enabled = true;
     }
 
     /// <summary>

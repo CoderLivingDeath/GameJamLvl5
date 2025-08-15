@@ -18,4 +18,6 @@ public class GameplaySceneAssets : MonoBehaviour
     public AudioResource Ktulhu;
     public AudioResource doctor;
     public AudioResource island;
+
+    public AudioSource JournalSource;
 }
