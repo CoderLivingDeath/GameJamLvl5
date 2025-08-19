@@ -7208,7 +7208,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.031017214, y: 3.5149798, z: 0}
+  m_LocalPosition: {x: -0.01426829, y: 2.29568, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16257,7 +16257,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -676.8794, y: -323.0299}
+  m_AnchoredPosition: {x: -676.8794, y: -323.02988}
   m_SizeDelta: {x: -1353.76, y: -646.06}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1290286245
@@ -17276,7 +17276,7 @@ MonoBehaviour:
   - {fileID: 358360442}
   AudioMixer: {fileID: 24100000, guid: f1b5f7e1f9166d34fb200a6cae775efc, type: 2}
   MusicSource: {fileID: 1005034075}
-  Ktulhu: {fileID: 8300000, guid: f1fd0490445ed024cad23750d781757e, type: 3}
+  Ktulhu: {fileID: 8300000, guid: c9f00e92f87a69745a4266dd04276a5d, type: 3}
   doctor: {fileID: 8300000, guid: 1ac5f5a8fced3b84aa332acd56688317, type: 3}
   island: {fileID: 8300000, guid: f4356f65711487541a1ab515c5178d9d, type: 3}
   JournalSource: {fileID: 1687760198}
@@ -22504,7 +22504,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: e4ae58c83ac0ac94e93baf129dbaf4b2, type: 3}
+  m_Texture: {fileID: 2800000, guid: 841a29295bb0c6a4a970b96b80d93699, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -25152,7 +25152,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -0.0011024}
-  m_SizeDelta: {x: 745.38, y: 679.24}
+  m_SizeDelta: {x: 1324.52, y: 679.24}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1943121587
 MonoBehaviour:
@@ -27089,7 +27089,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2035459360}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
