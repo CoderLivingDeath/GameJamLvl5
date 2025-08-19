@@ -155,13 +155,13 @@ public class ProgressionController
                         screamer = screamersView.StatuyaScreamer.gameObject;
                         break;
                     case "l2_painting":
-                        screamer = screamersView.MirrorScreamer.gameObject;
+                        screamer = screamersView.PaintingScreamer.gameObject;
                         break;
                     case "l2_clock":
                         screamer = screamersView.ClockScreamer.gameObject;
                         break;
                     case "l2_mirror":
-                        screamer = screamersView.PaintingScreamer.gameObject;
+                        screamer = screamersView.MirrorScreamer.gameObject;
                         
                         break;
                 }
