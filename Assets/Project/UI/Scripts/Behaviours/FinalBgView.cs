@@ -7,4 +7,6 @@ public class FinalBgView : MonoBehaviour
     public Sprite Doc;
     public Sprite Island;
     public Sprite Cult;
+
+    public GameObject cultAnimationObject;
 }

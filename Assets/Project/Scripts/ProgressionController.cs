@@ -46,7 +46,7 @@ public class ProgressionController
             case "cult":
                 _gameplaySceneAssets.MusicSource.resource = _gameplaySceneAssets.Ktulhu;
                 _gameplaySceneAssets.MusicSource.Play();
-                finalBgView.image.sprite = finalBgView.Cult;
+                finalBgView.cultAnimationObject.SetActive(true);
                 break;
             case "doc":
                 _gameplaySceneAssets.MusicSource.resource = _gameplaySceneAssets.doctor;
@@ -155,13 +155,13 @@ public class ProgressionController
                         screamer = screamersView.StatuyaScreamer.gameObject;
                         break;
                     case "l2_painting":
-                        screamer = screamersView.MirrorScreamer.gameObject;
+                        screamer = screamersView.PaintingScreamer.gameObject;
                         break;
                     case "l2_clock":
                         screamer = screamersView.ClockScreamer.gameObject;
                         break;
                     case "l2_mirror":
-                        screamer = screamersView.PaintingScreamer.gameObject;
+                        screamer = screamersView.MirrorScreamer.gameObject;
                         
                         break;
                 }
