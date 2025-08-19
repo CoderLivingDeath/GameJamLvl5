@@ -46,7 +46,7 @@ public class ProgressionController
             case "cult":
                 _gameplaySceneAssets.MusicSource.resource = _gameplaySceneAssets.Ktulhu;
                 _gameplaySceneAssets.MusicSource.Play();
-                finalBgView.image.sprite = finalBgView.Cult;
+                finalBgView.cultAnimationObject.SetActive(true);
                 break;
             case "doc":
                 _gameplaySceneAssets.MusicSource.resource = _gameplaySceneAssets.doctor;
