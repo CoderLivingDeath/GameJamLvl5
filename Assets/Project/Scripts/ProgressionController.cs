@@ -34,6 +34,7 @@ public class ProgressionController
     private int interactionCount = 0;
     private int currentLevel = 1;
     private bool isGameOver = false;
+    private bool shouldRestart = false;
 
     #endregion
 
@@ -44,18 +45,12 @@ public class ProgressionController
         switch (final)
         {
             case "cult":
-                _gameplaySceneAssets.MusicSource.resource = _gameplaySceneAssets.Ktulhu;
-                _gameplaySceneAssets.MusicSource.Play();
                 finalBgView.cultAnimationObject.SetActive(true);
                 break;
             case "doc":
-                _gameplaySceneAssets.MusicSource.resource = _gameplaySceneAssets.doctor;
-                _gameplaySceneAssets.MusicSource.Play();
                 finalBgView.image.sprite = finalBgView.Doc;
                 break;
             case "island":
-                _gameplaySceneAssets.MusicSource.resource = _gameplaySceneAssets.island;
-                _gameplaySceneAssets.MusicSource.Play();
                 finalBgView.image.sprite = finalBgView.Island;
                 break;
         }
@@ -97,6 +92,7 @@ public class ProgressionController
     /// </summary>
     public async UniTask HandleItemInteraction(string itemId)
     {
+        _inputService.Disable("gameplay");
 
         try
         {
@@ -142,7 +138,7 @@ public class ProgressionController
                 screamersView.gameObject.SetActive(true);
 
                 GameObject screamer = null;
-                    
+
                 switch (itemId)
                 {
                     case "l1_rorsharh":
@@ -162,7 +158,7 @@ public class ProgressionController
                         break;
                     case "l2_mirror":
                         screamer = screamersView.MirrorScreamer.gameObject;
-                        
+
                         break;
                 }
 
@@ -170,11 +166,18 @@ public class ProgressionController
                 {
                     screamer.SetActive(true);
                 }
-                
+
                 await showScope.AwaitClose();
+
+                var animator = screamer.GetComponentInChildren<Animator>();
+                if (animator != null)
+                {
+                    animator.enabled = true;
+                }
+
                 screamer.GetComponent<AudioSource>().enabled = true;
                 await UniTask.WaitForSeconds(screamer.GetComponent<AudioSource>().clip.length);
-                sceneManagerService.RestartGameplayLevelAsync().Forget();
+                shouldRestart = true;
                 _inputService.Enable();
 
                 return;
@@ -199,8 +202,11 @@ public class ProgressionController
         }
         finally
         {
-            if (!isGameOver)
-                _inputService.Enable("gameplay");
+            _inputService.Enable("gameplay");
+            if (shouldRestart)
+            {
+                sceneManagerService.RestartGameplayLevelAsync().Forget();
+            }
         }
     }
 
@@ -229,18 +235,26 @@ public class ProgressionController
         {
             case "cult":
                 await MovePlayerToNextLevel(_gameplaySceneAssets.L3SpawnPoints[0].position, _gameplaySceneAssets.L3CameraBounds[0], 2);
+
+                _gameplaySceneAssets.MusicSource.resource = _gameplaySceneAssets.Ktulhu;
+
                 break;
             case "doctor":
-
                 await MovePlayerToNextLevel(_gameplaySceneAssets.L3SpawnPoints[1].position, _gameplaySceneAssets.L3CameraBounds[1], 2);
+
+                _gameplaySceneAssets.MusicSource.resource = _gameplaySceneAssets.doctor;
                 break;
             case "island":
 
                 await MovePlayerToNextLevel(_gameplaySceneAssets.L3SpawnPoints[2].position, _gameplaySceneAssets.L3CameraBounds[2], 2);
+
+                _gameplaySceneAssets.MusicSource.resource = _gameplaySceneAssets.island;
                 break;
             default:
                 throw new Exception("АААА БЛЯТЬ!!!111");
         }
+
+        _gameplaySceneAssets.MusicSource.Play();
 
         //await MovePlayerToNextLevel(_gameplaySceneAssets.L3SpawnPoint.position, _gameplaySceneAssets.L3CameraBounds, 3);
     }
@@ -331,6 +345,7 @@ public class ProgressionController
         _player.transform.position = spawnPosition;
         _cameraController.SetNewBoundingShape(cameraBounds);
         currentLevel = nextLevel;
+
     }
 
 
