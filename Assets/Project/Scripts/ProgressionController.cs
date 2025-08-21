@@ -128,6 +128,25 @@ public class ProgressionController
                 _gameplayUIService.ClosePrecepririonSelectionView();
 
                 isGameOver = true;
+
+                //TODO: bug-id:18 ошибка логики. выбор текста для дневника при неоднозначном Root
+                // ===
+                var maxTones = _dataService.GetMaxTones();
+                string text = "";
+
+                if (maxTones.Count > 1)
+                {
+                    text = item.GetTone(selectedTag, maxTones.First().ToString());
+                }
+                else
+                {
+                    text = item.GetTone(selectedTag, _dataService.GetMaxTon());
+                }
+
+                string newEntry = $"[{item.meanings.fail.text}]\n{text}";
+                _gameplayUIService.AddEntryInJournalPopup(newEntry);
+                // ====
+
                 JournalPopupView.ShowContext context = new(true);
                 var showScope = _gameplayUIService.ShowJournalPopup(context);
                 _gameplaySceneAssets.JournalSource.Play();
@@ -297,11 +316,17 @@ public class ProgressionController
         RootEnum tagEnum = (RootEnum)Enum.Parse(typeof(RootEnum), selectedTag, true);
         _dataService.AddRootTag(tagEnum);
 
-        string tone = _dataService.GetMaxTon();
-        Debug.Log(selectedTag);
+        var maxTones = _dataService.GetMaxTones();
 
-        if (tone == "neutral")
-            tone = selectedTag;
+        string toneText = "";
+        if (maxTones.Count > 1)
+        {
+            toneText = item.GetTone(selectedTag, selectedTag);
+        }
+        else
+        {
+            toneText = item.GetTone(selectedTag, maxTones.First().ToString());
+        }
 
         string text = null;
         if (selectedTag == "cult")
@@ -316,12 +341,13 @@ public class ProgressionController
         {
             text = item.meanings.island.text;
         }
-        else
+        else if (selectedTag == "fail")
         {
             Debug.LogError("AAAAAA");
         }
 
-        string newEntry = $"[{text}]\n{item.meanings.GetTone(selectedTag)}";
+        string newEntry = $"[{text}]\n{toneText}";
+
         Debug.Log(newEntry);
         _gameplayUIService.AddEntryInJournalPopup(newEntry);
     }

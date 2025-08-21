@@ -77,6 +77,5 @@ public class FinalButtonsView : MonoBehaviour
     {
         Container.alpha = 0;
         AnimateFade(3).Forget();
-
     }
 }

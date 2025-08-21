@@ -40,6 +40,18 @@ public class DataService
         }
     }
 
+    public List<RootEnum> GetMaxTones()
+    {
+        int maxValue = Math.Max(_root.Cult, Math.Max(_root.Doc, _root.Island));
+
+        var result = new List<RootEnum>();
+
+        if (_root.Cult == maxValue) result.Add(RootEnum.Cult);
+        if (_root.Doc == maxValue) result.Add(RootEnum.Doctor);
+        if (_root.Island == maxValue) result.Add(RootEnum.Island);
+
+        return result;
+    }
 
     public void AddRootTag(RootEnum rootEnum)
     {
@@ -89,6 +101,44 @@ public class Item
     public string name { get; set; }
 
     public Meanings meanings { get; set; }
+
+    public string GetTone(string root, string tone)
+    {
+        Meaning meaning;
+
+        // выбираем значение в зависимости от root
+        switch (root.ToLower())
+        {
+            case "cult":
+                meaning = meanings.cult;
+                break;
+            case "doctor":
+                meaning = meanings.doctor;
+                break;
+            case "island":
+                meaning = meanings.island;
+                break;
+            case "fail":
+                meaning = meanings.fail;
+                break;
+            default:
+                throw new ArgumentException($"Unknown root: {root}");
+        }
+
+        // возвращаем соответствующий тон по параметру tone
+        switch (tone.ToLower())
+        {
+            case "cult":
+                return meaning.tone_cult;
+            case "doctor":
+                return meaning.tone_doctor;
+            case "island":
+                return meaning.tone_island;
+            default:
+                throw new ArgumentException($"Unknown tone: {tone}");
+        }
+    }
+
 }
 
 public class Meanings
@@ -101,6 +151,7 @@ public class Meanings
 
     public Meaning fail { get; set; } = new Meaning();
 
+    // TODO: тоне получается неверно
     public string GetTone(string tone)
     {
         switch (tone)

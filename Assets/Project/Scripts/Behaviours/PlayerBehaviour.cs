@@ -19,6 +19,13 @@ public class PlayerBehaviour : MonoBehaviour, IGameplay_MovementEventHandler, IG
     [Inject] private EventBus _eventBus;
     [Inject] private InputService _inputService;
 
+    [Inject]
+    public void Construct()
+    {
+        //TODO: убрать
+        _inputService.Enable("gameplay");
+    }
+
     public void HandleInteract(bool button)
     {
         _interactionBehaviour.Interact();
@@ -39,7 +46,6 @@ public class PlayerBehaviour : MonoBehaviour, IGameplay_MovementEventHandler, IG
     {
         _movementBehaviour = GetComponent<MovementBehaviour>();
         _interactionBehaviour = GetComponent<InteractionBehaviour>();
-
     }
 
     private void InputService_OnDisabled(string filter)
