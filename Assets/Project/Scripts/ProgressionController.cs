@@ -128,7 +128,7 @@ public class ProgressionController
                 _gameplayUIService.ClosePrecepririonSelectionView();
 
                 isGameOver = true;
-
+                _gameplaySceneAssets.MusicSource.Stop();
                 //TODO: bug-id:18 ошибка логики. выбор текста для дневника при неоднозначном Root
                 // ===
                 var maxTones = _dataService.GetMaxTones();
