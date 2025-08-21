@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   l1_rorsharh: {fileID: 21300000, guid: a53451817e49c324f81d63f001f599e6, type: 3}
   l1_piplls: {fileID: 21300000, guid: 0bd639eef121ec74fbf07bd070662c43, type: 3}
-  l1_statue: {fileID: 21300000, guid: 7f03853eba8384e45a161973211a0fd1, type: 3}
+  l1_statue: {fileID: 21300000, guid: 69103ad2e768cb049a5b40dc1e098680, type: 3}
   l2_painting: {fileID: 21300000, guid: c99daff8053bb9d41865bcd3431bbb34, type: 3}
   l2_clock: {fileID: 8581363780399802525, guid: ebea761a27ab80647ad2c5d493816c49, type: 3}
   l2_mirror: {fileID: 1766558057140839139, guid: 7dcaae4590ea38a4c972f9424e740b1b, type: 3}
